@@ -6,7 +6,7 @@ const Skills = () => {
     <div className="text-center bg-white py-16">
       <div className="mx-auto w-[90%]">
         <h2 className="text-4xl font-extrabold mb-4 text-black">Tech</h2>
-        <div className="grid grid-cols-1 md:grid-cols-8 gap-2">
+        <div className="grid grid-cols-8 md:grid-cols-8 gap-2">
           <div className="flex flex-col items-center">
             <Image
               width={100}

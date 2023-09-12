@@ -10,7 +10,7 @@ const Portfolio = () => {
         <Image
           width={200}
           height={200}
-          className="lg:w-1/6 md:w-1/6 w-5/6 mb-10 object-cover object-center rounded-full"
+          className="lg:w-1/6 md:w-1/6 w-1/4 mb-10 object-cover object-center rounded-full"
           alt="profile"
           src="/Profile.jpeg"
         />

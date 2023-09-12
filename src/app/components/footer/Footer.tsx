@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="text-white bg-[#0e2f4b] body-font">
       <div className="container w-[90%] px-5 py-2 mx-auto flex items-center sm:flex-row flex-col">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-          <Image src="/log.png" alt="logoimage" width={70} height={10} />
+          <Image src="/LOGO.png" alt="logoimage" width={70} height={10} />
         </a>
         <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © 2023 Ghazi Zaidi. All Rights Reserved.

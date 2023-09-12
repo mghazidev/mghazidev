@@ -4,7 +4,7 @@ const Experience = () => {
   return (
     <section className="text-white bg-black body-font overflow-hidden">
       <div className="container w-[90%] px-5 py-16 mx-auto">
-        <h1 className="text-4xl mb-12"> Experience </h1>
+        <h1 className="text-4xl mb-12 text-white"> Experience </h1>
         <div className="-my-8 divide-y-2 divide-white">
           <div className="py-8 flex flex-wrap md:flex-nowrap">
             <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
@@ -20,7 +20,7 @@ const Experience = () => {
               </span>
             </div>
             <div className="md:flex-grow md:mx-10 mx-0">
-              <ul className="list-disc list-inside text-sm">
+              <ul className="list-disc list-inside text-sm text-white">
                 <li>
                   Collaborated on the development of an in-house product using
                   cutting-edge technologies such as Next.js, React, TypeScript,

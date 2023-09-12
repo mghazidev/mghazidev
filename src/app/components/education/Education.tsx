@@ -17,7 +17,7 @@ const Education = () => {
               </span>
             </div>
             <div className="md:flex-grow md:mx-10 mx-0">
-              <ul className="list-disc list-inside text-sm">
+              <ul className="list-disc list-inside text-sm text-white">
                 <li>
                   I studied computer science at The Educators School, laying a
                   strong foundation for my educational journey.
@@ -36,7 +36,7 @@ const Education = () => {
               <span className="mt-1 text-gray-300 text-sm">2021 - 2023</span>
             </div>
             <div className="md:flex-grow md:mx-10 mx-0">
-              <ul className="list-disc list-inside text-sm">
+              <ul className="list-disc list-inside text-sm text-white">
                 <li>
                   At Govt College, my focus remained on computer science,
                   enhancing my analytical skills and knowledge.
@@ -54,7 +54,7 @@ const Education = () => {
               <span className="mt-1 text-gray-300 text-sm">Present</span>
             </div>
             <div className="md:flex-grow md:mx-10 mx-0">
-              <ul className="list-disc list-inside text-sm">
+              <ul className="list-disc list-inside text-sm text-white">
                 <li>
                   I am eagerly looking forward to enrolling in the university
                   once admissions open, where I will continue my pursuit of
