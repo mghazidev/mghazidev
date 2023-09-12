@@ -8,9 +8,9 @@ import Image from "next/image";
 const IntroSection = () => {
   return (
     <>
-      <section class=" bg-[#0e2f4b] text-whit body-font">
-        <div class="container w-[90%] mx-auto flex px-5 py-16 md:flex-row flex-col items-center">
-          <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <section className=" bg-[#0e2f4b] text-whit body-font">
+        <div className="container w-[90%] mx-auto flex px-5 py-16 md:flex-row flex-col items-center">
+          <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="text-4xl font-extrabold mb-4">Ghazi Zaidi</h1>
             <p className="text-lg mb-4">
               Frontend Engineer with over a year of experience in designing and
@@ -40,8 +40,8 @@ const IntroSection = () => {
               </a>
             </div>
           </div>
-          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <Image src="/pol.jpeg" width={270} height={100} />
+          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+            <Image src="/pol.jpeg" alt="poljpg" width={270} height={100} />
           </div>
         </div>
       </section>

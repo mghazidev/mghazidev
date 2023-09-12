@@ -20,7 +20,7 @@ const Experience = () => {
               </span>
             </div>
             <div className="md:flex-grow md:mx-10 mx-0">
-              <ul class="list-disc list-inside text-sm">
+              <ul className="list-disc list-inside text-sm">
                 <li>
                   Collaborated on the development of an in-house product using
                   cutting-edge technologies such as Next.js, React, TypeScript,
