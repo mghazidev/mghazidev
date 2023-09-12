@@ -16,7 +16,7 @@ const Portfolio = () => {
         />
         <div className="w-full md:w-2/3 flex flex-col mb-4 items-center text-center">
           <h1 className="sm:text-sm text-sm mb-4 text-black">
-            Portfolio Link / Company Website
+            Portfolio-Link / Company Website
           </h1>
           <div className="flex">
             <Link href="https://github.com/mghazidev">
