@@ -57,7 +57,7 @@ const Education = () => {
               <ul className="list-disc list-inside text-sm">
                 <li>
                   I am eagerly looking forward to enrolling in the university
-                  once admissions open, where I'll continue my pursuit of
+                  once admissions open, where I will continue my pursuit of
                   knowledge and growth in the field of computer science.
                 </li>
               </ul>
