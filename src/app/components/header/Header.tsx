@@ -4,6 +4,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Image from "next/image";
+import Link from "next/link";
 
 const IntroSection = () => {
   return (
@@ -23,21 +24,36 @@ const IntroSection = () => {
               pursue a career as a JS React Developer.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-2xl hover:text-yellow-500">
+              <Link
+                href="https://twitter.com/Ghazi99418953"
+                className="text-2xl hover:text-yellow-500"
+              >
                 <TwitterIcon />
-              </a>
-              <a href="#" className="text-2xl hover:text-yellow-500">
+              </Link>
+              <Link
+                href="https://www.facebook.com/people/Ghazi-Mohammad/pfbid026mHsRRaNgGy3EkAAT6rPXXwWhz8njhSkpFT6U4Va3N2HyzMZ7TJm7CXXz1hbgB5vl/"
+                className="text-2xl hover:text-yellow-500"
+              >
                 <FacebookIcon />
-              </a>
-              <a href="#" className="text-2xl hover:text-yellow-500">
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/mghazidev/"
+                className="text-2xl hover:text-yellow-500"
+              >
                 <LinkedInIcon />
-              </a>
-              <a href="#" className="text-2xl hover:text-yellow-500">
+              </Link>
+              <Link
+                href="https://github.com/mghazidev"
+                className="text-2xl hover:text-yellow-500"
+              >
                 <GitHubIcon />
-              </a>
-              <a href="#" className="text-2xl hover:text-yellow-500">
+              </Link>
+              <Link
+                href="https://www.instagram.com/mghazidev/"
+                className="text-2xl hover:text-yellow-500"
+              >
                 <InstagramIcon />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
