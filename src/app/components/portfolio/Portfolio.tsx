@@ -7,7 +7,9 @@ const Portfolio = () => {
     <section className="text-gray-600 body-font bg-white">
       <div className="container mx-auto flex flex-col px-5 py-16 justify-center items-center">
         <h2 className="text-4xl font-extrabold mb-4 text-black">Portfolio</h2>
-        <img
+        <Image
+          width={200}
+          height={200}
           className="lg:w-1/6 md:w-1/6 w-5/6 mb-10 object-cover object-center rounded-full"
           alt="profile"
           src="/profile.jpeg"
