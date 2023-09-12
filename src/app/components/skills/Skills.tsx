@@ -6,7 +6,7 @@ const Skills = () => {
     <div className="text-center bg-white py-16">
       <div className="mx-auto w-[90%]">
         <h2 className="text-4xl font-extrabold mb-4 text-black">Tech</h2>
-        <div className="grid grid-cols-8 md:grid-cols-8 gap-2">
+        <div className="grid grid-cols-6 md:grid-cols-10 gap-5">
           <div className="flex flex-col items-center">
             <Image
               width={100}
@@ -66,8 +66,17 @@ const Skills = () => {
               width={100}
               height={100}
               className="md:w-[100px] w-[70px]"
-              src="/tail.svg"
-              alt="Tail"
+              src="/mui.svg"
+              alt="Mui"
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              className="md:w-[100px] w-[70px]"
+              src="/tailwind-css-2.svg"
+              alt="Tailwind Css"
             />
           </div>
           <div className="flex flex-col items-center">
@@ -77,6 +86,15 @@ const Skills = () => {
               className="md:w-[100px] w-[70px]"
               src="/wordpress.svg"
               alt="WordPress"
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              className="md:w-[100px] w-[70px]"
+              src="/bootstrap.svg"
+              alt="bootstrap"
             />
           </div>
         </div>
