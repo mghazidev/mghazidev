@@ -12,7 +12,7 @@ const Portfolio = () => {
           height={200}
           className="lg:w-1/6 md:w-1/6 w-5/6 mb-10 object-cover object-center rounded-full"
           alt="profile"
-          src="/profile.jpeg"
+          src="/Profile.jpeg"
         />
         <div className="w-full md:w-2/3 flex flex-col mb-4 items-center text-center">
           <h1 className="sm:text-sm text-sm mb-4 text-black">
