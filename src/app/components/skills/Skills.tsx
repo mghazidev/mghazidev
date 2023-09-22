@@ -2,6 +2,49 @@ import React from "react";
 import Image from "next/image";
 
 const Skills = () => {
+  // const icons = [
+  //   {
+  //     src: "/html.svg",
+  //     alt: "HTML5",
+  //   },
+  //   {
+  //     src: "/css.svg",
+  //     alt: "CSS3",
+  //   },
+  //   {
+  //     src: "/js.svg",
+  //     alt: "Javascript",
+  //   },
+  //   {
+  //     src: "/react.svg",
+  //     alt: "React",
+  //   },
+  //   {
+  //     src: "/tailwind.svg",
+  //     alt: "Nextjs",
+  //   },
+  //   {
+  //     src: "/ts.svg",
+  //     alt: "Typescript",
+  //   },
+  //   {
+  //     src: "/mui.svg",
+  //     alt: "MaterialUI",
+  //   },
+  //   {
+  //     src: "/bootstrap.svg",
+  //     alt: "Bootstrap",
+  //   },
+  //   {
+  //     src: "/wordpress.svg",
+  //     alt: "Wordpress",
+  //   },
+  //   {
+  //     src: "/tailwind-css-2.svg",
+  //     alt: "TailwindCSS",
+  //   },
+  // ];
+
   return (
     <div className="text-center bg-white py-16">
       <div className="mx-auto w-[90%]">
@@ -49,7 +92,7 @@ const Skills = () => {
               height={100}
               className="md:w-[100px] w-[70px]"
               src="/tailwind.svg"
-              alt="Tailwind CSS"
+              alt="Nextjs"
             />
           </div>
           <div className="flex flex-col items-center">

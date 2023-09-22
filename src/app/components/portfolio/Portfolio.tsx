@@ -19,7 +19,7 @@ const Portfolio = () => {
             Portfolio-Link / Company Website
           </h1>
           <div className="flex">
-            <Link href="https://github.com/mghazidev">
+            <Link href="https://devsquarepk.com/">
               <button className="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
                 <Image src="/dpk.png" alt="dpk" width={20} height={20} />
                 <span className="ml-4 flex items-start flex-col leading-none">
@@ -27,7 +27,7 @@ const Portfolio = () => {
                 </span>
               </button>
             </Link>
-            <Link href="https://devsquarepk.com/">
+            <Link href="https://github.com/mghazidev">
               <button className="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center ml-4 hover:bg-gray-200 focus:outline-none">
                 <Image src="/git.svg" alt="git" width={16} height={16} />
                 <span className="ml-4 flex items-start flex-col leading-none">
