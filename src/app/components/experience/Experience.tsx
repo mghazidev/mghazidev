@@ -39,6 +39,10 @@ const Experience = () => {
                   to HTML conversions, utilizing Tailwind CSS and Bootstrap to
                   ensure precision in design implementation.
                 </li>
+                <li>Integrated Next-Auth for customer authorization.</li>
+                <li>
+                  Built shared components and showcase them in a Storybook.
+                </li>
               </ul>
             </div>
           </div>
