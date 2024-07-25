@@ -23,8 +23,8 @@ const Experience = () => {
               <ul className="list-disc list-inside text-sm text-white">
                 <li>
                   Collaborated on the development of an in-house product using
-                  cutting-edge technologies such as Next.js, React, TypeScript,
-                  and MUI.
+                  cutting-edge technologies such as Next.js, Node Js, React,
+                  TypeScript, and MUI.
                 </li>
                 <li>
                   Overseeing the entire lifecycle from feature requirement
@@ -42,6 +42,15 @@ const Experience = () => {
                 <li>Integrated Next-Auth for customer authorization.</li>
                 <li>
                   Built shared components and showcase them in a Storybook.
+                </li>
+                <li>
+                  Started learning Node.js a few months ago, quickly grasping
+                  server-side development and handling backend tasks
+                  effectively.
+                </li>
+                <li>
+                  Demonstrated a strong ability to learn new technologies
+                  rapidly and apply them efficiently in projects.
                 </li>
               </ul>
             </div>

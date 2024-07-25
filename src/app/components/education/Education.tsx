@@ -52,13 +52,22 @@ const Education = () => {
                 Degree
               </span>
               <span className="mt-1 text-gray-300 text-sm">Present</span>
+              <span className="mt-1 text-gray-300 text-sm">
+                Bachelors in Software Engineering
+              </span>
+              <span className="mt-1 text-gray-300 text-sm">
+                Mohammad Ali Jinnah University
+              </span>
             </div>
             <div className="md:flex-grow md:mx-10 mx-0">
               <ul className="list-disc list-inside text-sm text-white">
                 <li>
-                  I am eagerly looking forward to enrolling in the university
-                  once admissions open, where I will continue my pursuit of
-                  knowledge and growth in the field of computer science.
+                  Currently pursuing a Bachelor's degree in Software Engineering
+                  at Mohammad Ali Jinnah University.
+                </li>
+                <li>
+                  Leading the tech hackathon at MAJU, fostering innovation and
+                  collaboration among peers.
                 </li>
               </ul>
             </div>
