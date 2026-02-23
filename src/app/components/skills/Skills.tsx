@@ -113,6 +113,24 @@ const Skills = () => {
               alt="NodeJs"
             />
           </div>
+          <div className="flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              className="md:w-[100px] w-[70px]"
+              src="/c.svg"
+              alt="C++"
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              className="md:w-[100px] w-[70px]"
+              src="/flutter-logo.svg"
+              alt="flutter"
+            />
+          </div>
 
           <div className="flex flex-col items-center">
             <Image
