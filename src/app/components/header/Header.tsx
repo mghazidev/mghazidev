@@ -25,7 +25,7 @@ const IntroSection = () => {
               the digital world. I spent hours tinkering with my computer,
               eagerly learning about programming languages and algorithms. My
               love for coding only grew stronger and I eventually decided to
-              pursue a career as a JS React Developer.
+              pursue a career as a JS React Developer
             </p>
             <div className="flex space-x-4 text-white">
               <Link
