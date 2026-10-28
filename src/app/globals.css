@@ -1,27 +1,118 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/*
+ * Design system — "Aurora" surfaces with "Blueprint" detail.
+ *
+ * One dark theme, deliberately. The site is a showcase, and the work it shows
+ * is dark-UI work; a light mode would be a second design to maintain for no
+ * reader who asked for it.
+ */
+
+@theme {
+  --color-ink: #06060b;
+  --color-ink-2: #0b0b13;
+  --color-fg: #ecebf5;
+  --color-muted: #a9a8bd;
+  --color-faint: #6f6e86;
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-line-strong: rgb(255 255 255 / 0.16);
+  --color-glass: rgb(255 255 255 / 0.045);
+
+  --color-violet: #a78bfa;
+  --color-violet-deep: #7c5cff;
+  --color-cyan: #22d3ee;
+  --color-cyan-soft: #67e8f9;
+  --color-pink: #f9a8d4;
+  --color-mint: #34d399;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: var(--color-fg);
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(167 139 250 / 0.35);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  /* Frosted panel used for cards and the header. */
+  .glass {
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.075), rgb(255 255 255 / 0.018));
+    border: 1px solid var(--color-line);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  /* Gradient headline text. */
+  .text-aurora {
+    background: linear-gradient(100deg, #c4b5fd 5%, #67e8f9 55%, #f9a8d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Section eyebrow — the mono "// label" line above headings. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+  }
+
+  /* The "//" is decoration: in CSS so JSX stays clean, with empty alt text so
+     screen readers don't announce "slash slash". */
+  .eyebrow::before {
+    content: "// " / "";
+  }
+
+  /* Blueprint corner brackets, drawn with gradients so no extra markup is needed. */
+  .brackets {
+    --b: var(--color-cyan);
+    background:
+      linear-gradient(var(--b), var(--b)) top left / 14px 2px no-repeat,
+      linear-gradient(var(--b), var(--b)) top left / 2px 14px no-repeat,
+      linear-gradient(var(--b), var(--b)) top right / 14px 2px no-repeat,
+      linear-gradient(var(--b), var(--b)) top right / 2px 14px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom left / 14px 2px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom left / 2px 14px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom right / 14px 2px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom right / 2px 14px no-repeat;
+  }
+
+  /* Dotted engineering grid behind case-study panels. */
+  .dot-grid {
+    background-image: radial-gradient(rgb(94 230 255 / 0.13) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
 }

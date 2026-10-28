@@ -1,19 +1,19 @@
-import Header from "@/app/components/header/Header";
-import Skills from "@/app/components/skills/Skills";
-import Experience from "@/app/components/experience/Experience";
-import Portfolio from "@/app/components/portfolio/Portfolio";
-import Education from "@/app/components/education/Education";
-import Footer from "@/app/components/footer/Footer";
+import { About } from "@/components/home/about";
+import { Contact } from "@/components/home/contact";
+import { Experience } from "@/components/home/experience";
+import { Hero } from "@/components/home/hero";
+import { Stack } from "@/components/home/stack";
+import { Work } from "@/components/home/work";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Header />
-      <Skills />
+      <Hero />
+      <Work />
+      <Stack />
       <Experience />
-      <Portfolio />
-      <Education />
-      <Footer />
+      <About />
+      <Contact />
     </>
   );
 }
