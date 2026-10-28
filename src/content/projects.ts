@@ -185,49 +185,57 @@ export const projects: Project[] = [
     ],
     cover: {
       src: "/work/finance-intelligence/dashboard.png",
-      width: 1280,
-      height: 1053,
+      width: 2160,
+      height: 1350,
       alt: "Finance Intelligence dashboard for August 2026: 995.19 EUR spent, a category breakdown, recurring payments and next month's outlook",
       frame: "browser",
     },
     gallery: [
       {
         src: "/work/finance-intelligence/chat-answer.png",
-      width: 768,
-      height: 640,
+        width: 768,
+        height: 640,
         alt: "The assistant's answer with two tool calls, Read spending by category and Read your commitments, shown above it",
         frame: "none",
-        caption: "The assistant asks the engine for the figure instead of producing one.",
+        caption: "From a live run against a local model: the assistant asks the engine for the figure instead of producing one.",
       },
       {
         src: "/work/finance-intelligence/uncertain-transaction.png",
-      width: 718,
-      height: 177,
+        width: 1077,
+        height: 266,
         alt: "A review card for CREDIT 884213 marked Unconfirmed: this could be income, a refund, or money moved from your own savings",
         frame: "none",
         caption: "A transaction the app can't classify is held for a decision.",
       },
       {
         src: "/work/finance-intelligence/outlook.png",
-      width: 320,
-      height: 395,
+        width: 480,
+        height: 623,
         alt: "September outlook separating already committed costs, estimates, and the likely amount left over",
         frame: "none",
         caption: "Estimates are labelled as estimates wherever they appear.",
       },
       {
         src: "/work/finance-intelligence/commitments.png",
-      width: 1280,
-      height: 877,
+        width: 2160,
+        height: 1350,
         alt: "The commitments page offering rent, Netflix and groceries as detected commitments, with salary correctly left out",
         frame: "browser",
         caption: "Detected commitments are offered, not assumed — and salary isn't one.",
       },
+      {
+        src: "/work/finance-intelligence/transactions.png",
+        width: 2160,
+        height: 1350,
+        alt: "The August transaction list: each normalised merchant name shown above the bank's original wording, and the unidentified credit typed Unknown",
+        frame: "browser",
+        caption: "Every row keeps the bank's original wording beneath the cleaned-up name.",
+      },
     ],
     video: {
       src: "/work/finance-intelligence/journey.webm",
-      poster: "/work/finance-intelligence/dashboard.png",
-      caption: "Upload to answer in one take — captured automatically from a real run.",
+      poster: "/work/finance-intelligence/upload.png",
+      caption: "Upload, review, dashboard and commitments in one real take — the deterministic engine, no model in the loop.",
     },
     repo: "https://github.com/mghazidev/finance-intelligence",
   },
@@ -327,10 +335,27 @@ export const projects: Project[] = [
       ],
     },
     features: [
-      { title: "Slides in, rail out", detail: "A PDF becomes a navigable slide rail with extracted text per slide." },
-      { title: "Live transcript", detail: "Speech streams in and is transcribed while the lecture continues." },
-      { title: "Notes per slide", detail: "Generated for the slide you're on, into an editor you can change." },
-      { title: "Pre-flight check", detail: "Confirms the model is loaded and VRAM is free before recording starts." },
+      {
+        title: "Slides in, workspace out",
+        detail: "Drop a PDF and it opens straight into a workspace: slide rail, the current slide, and its notes.",
+      },
+      {
+        title: "Live transcript, tagged by slide",
+        detail: "Speech is transcribed as the lecture goes, and every line is filed under the slide it was said on.",
+      },
+      {
+        title: "Notes from the explanation",
+        detail:
+          "When the lecturer moves on or recording stops, a local model writes notes from what was said — not just what was on the slide.",
+      },
+      {
+        title: "An editor you own",
+        detail: "Notes land in a rich-text editor seeded with the slide's own points, and save automatically.",
+      },
+      {
+        title: "Pre-flight check",
+        detail: "Before recording, confirms the model is loaded, there's enough video memory, and transcription is ready.",
+      },
     ],
     decisions: [
       {
@@ -338,16 +363,65 @@ export const projects: Project[] = [
         detail: "Transcription is pinned to the CPU so it never competes with the language model for video memory.",
       },
       {
+        title: "A failure costs formatting, not content",
+        detail:
+          "A slide's transcript is only cleared once its notes are written. If generation fails, everything said is still buffered and the slide can be written up again.",
+      },
+      {
+        title: "One model call at a time",
+        detail:
+          "Generation is queued and serialised, so a slow slide can delay the next one but never overlap it and starve the machine.",
+      },
+      {
         title: "Fail before the lecture, not during it",
-        detail: "A readiness check runs before recording, because a problem discovered mid-lecture means lost notes.",
+        detail: "The readiness check runs before recording, because a problem discovered mid-lecture means lost notes.",
       },
     ],
     metrics: [
       { value: "2", label: "local models" },
       { value: "0", label: "cloud calls" },
-      { value: "1", label: "WebSocket" },
+      { value: "1", label: "model call in flight" },
     ],
-    gallery: [],
+    cover: {
+      src: "/work/lecture-ai-companion/notes.png",
+      width: 2160,
+      height: 1350,
+      alt: "The workspace after recording: the slide Why cache at all on the left, generated notes and the live transcript on the right",
+      frame: "browser",
+    },
+    gallery: [
+      {
+        src: "/work/lecture-ai-companion/recording.png",
+        width: 2160,
+        height: 1350,
+        alt: "Recording at 13 seconds: the transcript panel shows the lecturer's words appearing under slide 2 while the app listens",
+        frame: "browser",
+        caption: "Mid-lecture: the transcript fills in live, filed under slide 2.",
+      },
+      {
+        src: "/work/lecture-ai-companion/notes-panel.png",
+        width: 836,
+        height: 810,
+        alt: "Notes for slide 2: the slide's own bullets, followed by generated notes saying a network round trip is about a million times slower than reading memory",
+        frame: "none",
+        caption:
+          "The generated notes carry the latency figures the lecturer said aloud — none of them are on the slide.",
+      },
+      {
+        src: "/work/lecture-ai-companion/landing.png",
+        width: 2160,
+        height: 1350,
+        alt: "Landing page: Focus on the lecture. Keep the notes. A drop zone for lecture slides, and an empty recent lectures list",
+        frame: "browser",
+        caption: "Everything stays on the machine — the landing page says so up front.",
+      },
+    ],
+    video: {
+      src: "/work/lecture-ai-companion/journey.webm",
+      poster: "/work/lecture-ai-companion/recording.png",
+      caption:
+        "Upload, record, notes — real transcription and a real local model. The deck and the voice are synthetic, so no course material is shown.",
+    },
     repo: "https://github.com/mghazidev/lecture-ai-companion",
   },
   {
@@ -515,9 +589,9 @@ export const projects: Project[] = [
   {
     slug: "zyturf",
     title: "ZyTurf",
-    tagline: "Book a turf slot in a few taps, and run the venue from one dashboard.",
+    tagline: "Book a sports ground in three steps, and run the venue from one dashboard.",
     summary:
-      "A turf-booking product explored across three iterations — a Node backend, a Django backend, and the Next.js demo shown here.",
+      "A turf-booking product for Karachi and Lahore: a marketing site, a three-step booking flow, and an owner dashboard with revenue and booking analytics.",
     platform: "web",
     status: "concept",
     statusLabel: "Product concept",
@@ -525,42 +599,111 @@ export const projects: Project[] = [
     context: "Personal product",
     role: "Solo — product, design, frontend",
     accent: "#4ade80",
-    problem: "Booking a sports turf usually means calling the venue. Venues track slots on paper.",
+    problem:
+      "Booking a sports ground usually means phoning the venue and hoping a slot is free. Owners track bookings on paper and can't see what earns them money.",
     built:
-      "A Next.js front end for players and venue owners: slot booking, sign-in, and an admin dashboard with charts, built on shadcn/ui.",
+      "The whole product surface as a Next.js front end on shadcn/ui — landing page, a gated three-step booking wizard, and an owner dashboard with Recharts analytics — running on mock data while the backend was prototyped separately.",
     stack: [
-      { layer: "Web", items: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"] },
-      { layer: "UI", items: ["Radix", "react-hook-form", "Recharts", "Embla"] },
-      { layer: "Explored backends", items: ["Node.js", "Django"] },
+      { layer: "Web", items: ["Next.js 15", "TypeScript", "Tailwind", "shadcn/ui"] },
+      { layer: "UI", items: ["Radix", "Recharts", "react-day-picker"] },
+      { layer: "Backends explored", items: ["Node.js", "Django"] },
     ],
     architecture: {
       nodes: [
-        { id: "player", label: "Booking", detail: "players" },
+        { id: "player", label: "Players", detail: "landing · booking" },
         { id: "ui", label: "Next.js", detail: "shadcn/ui" },
-        { id: "admin", label: "Admin", detail: "venue owners" },
+        { id: "owner", label: "Owners", detail: "dashboard" },
       ],
       edges: [
         { from: "player", to: "ui", via: "book" },
-        { from: "admin", to: "ui", via: "manage" },
+        { from: "owner", to: "ui", via: "manage" },
       ],
     },
     features: [
-      { title: "Slot booking", detail: "Pick a turf and a time." },
-      { title: "Admin dashboard", detail: "Venue owners see bookings and charts." },
-      { title: "Accounts", detail: "Sign-up and sign-in for players and owners." },
+      {
+        title: "Three-step booking",
+        detail: "Sport, date and slot; then contact details; then a summary and payment method — ending on a confirmation.",
+      },
+      {
+        title: "Slots that show their state",
+        detail: "Peak and off-peak slots are labelled, and slots already taken are disabled rather than hidden.",
+      },
+      {
+        title: "Owner dashboard",
+        detail: "Revenue, bookings, customers and rating, with charts for revenue, sport mix and booking trends.",
+      },
+      {
+        title: "Recent bookings",
+        detail: "A searchable table with each booking's status — confirmed, pending or completed.",
+      },
+      {
+        title: "Marketing site",
+        detail: "Featured grounds, sports and prices, and testimonials, set in Karachi and Lahore with prices in rupees.",
+      },
     ],
     decisions: [
       {
-        title: "Iterate on the backend before committing",
-        detail: "The same product was prototyped on Node and on Django before settling the front end, to compare the two in practice.",
+        title: "Every step is gated",
+        detail:
+          "Each step's Continue button stays disabled until that step is complete, so an incomplete booking can never reach the payment screen.",
+      },
+      {
+        title: "Prototype the backend twice before committing",
+        detail:
+          "The same product was built against a Node backend and a Django backend before the front end was settled, to compare the two in practice.",
       },
     ],
     metrics: [
-      { value: "3", label: "iterations" },
+      { value: "3", label: "booking steps" },
       { value: "5", label: "routes" },
       { value: "2", label: "backends tried" },
     ],
-    gallery: [],
+    cover: {
+      src: "/work/zyturf/landing.png",
+      width: 2160,
+      height: 1350,
+      alt: "ZyTurf landing page: Book Premium Sports Grounds in Karachi & Lahore, with an Explore Grounds button",
+      frame: "browser",
+    },
+    gallery: [
+      {
+        src: "/work/zyturf/booking-slot.png",
+        width: 2160,
+        height: 1350,
+        alt: "Booking step one: Football selected, October 29th, the 16:00 to 18:00 peak slot chosen, two slots unavailable, 10 players",
+        frame: "browser",
+        caption: "Step one — taken slots are disabled, and peak hours are labelled.",
+      },
+      {
+        src: "/work/zyturf/booking-payment.png",
+        width: 2160,
+        height: 1350,
+        alt: "Booking step three: a summary of ground, date, time, sport and players with a total of Rs. 3,000, and Digital Wallet selected",
+        frame: "browser",
+        caption: "Step three — the summary before payment.",
+      },
+      {
+        src: "/work/zyturf/booking-confirmed.png",
+        width: 2160,
+        height: 1350,
+        alt: "Booking Confirmed with the booking details, a Download Receipt button, and a confirmation toast",
+        frame: "browser",
+        caption: "Confirmation, with a receipt and a toast.",
+      },
+      {
+        src: "/work/zyturf/admin-full.png",
+        width: 2160,
+        height: 2583,
+        alt: "Owner dashboard: revenue, bookings, customers and rating cards; revenue bar chart; sports distribution pie; booking trends line chart; recent bookings table",
+        frame: "browser",
+        caption: "The owner dashboard, top to bottom.",
+      },
+    ],
+    video: {
+      src: "/work/zyturf/journey.webm",
+      poster: "/work/zyturf/booking-slot.png",
+      caption: "Landing page to confirmed booking to the owner's dashboard, in one take.",
+    },
   },
 ];
 
