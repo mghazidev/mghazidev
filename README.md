@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, This is Ghazi Muhammad</h1>
-<h3 align="center">Frontend Engineer / React Dev / Node Js</h3>
+<h3 align="center">Frontend Engineer / Next js/ Node js / Typescript / Trader / Mobile Developer</h3>
 
-- 🔭 I’m currently working on **MenuPK**
+- 🔭 I’m currently Studying **Bachelors Computer Science in Germany**
 
 - 🌱 I’m currently learning **Typescript, Node Js**
 
