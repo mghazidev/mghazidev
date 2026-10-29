@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * Design system — "Aurora" surfaces with "Blueprint" detail.
+ * Design system, "Aurora" surfaces with "Blueprint" detail.
  *
  * One dark theme, deliberately. The site is a showcase, and the work it shows
  * is dark-UI work; a light mode would be a second design to maintain for no
@@ -81,7 +81,7 @@
     color: transparent;
   }
 
-  /* Section eyebrow — the mono "// label" line above headings. */
+  /* Section eyebrow, the mono "// label" line above headings. */
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.75rem;

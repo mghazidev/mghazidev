@@ -4,7 +4,7 @@
  * Every figure is read from the original document: grades from the board
  * certificates and the university's verified transcript, the OTH programme and
  * semester from its admission letter, dates from each certificate. Transcripts
- * themselves are not published — they carry ID numbers and a date of birth —
+ * themselves are not published, they carry ID numbers and a date of birth , 
  * only the results are.
  */
 
@@ -22,7 +22,7 @@ export type Stage = {
 
 export const education: Stage[] = [
   {
-    period: "2026 — 2029",
+    period: "2026 – 2029",
     award: "B.Sc. International Computer Science",
     school: "OTH Regensburg",
     place: "Regensburg, Germany",
@@ -30,13 +30,13 @@ export const education: Stage[] = [
     current: true,
   },
   {
-    period: "2024 — 2025",
+    period: "2024 – 2025",
     award: "BS Software Engineering",
     school: "Mohammad Ali Jinnah University",
     place: "Karachi, Pakistan",
     facts: [
       "CGPA 3.80 / 4.00 over three semesters",
-      "GPA 4.00 in Spring 2024 — Chancellor's Honour Roll",
+      "GPA 4.00 in Spring 2024, on the Chancellor's Honour Roll",
       "Continued at OTH Regensburg, with credits transferred",
     ],
     courses: [
@@ -49,18 +49,18 @@ export const education: Stage[] = [
     ],
   },
   {
-    period: "2021 — 2023",
+    period: "2021 – 2023",
     award: "Intermediate (HSSC), Science",
     school: "Govt. National College",
     place: "Karachi, Pakistan",
-    facts: ["Grade A — Board of Intermediate Education, Karachi"],
+    facts: ["Grade A, Board of Intermediate Education, Karachi"],
   },
   {
     period: "2021",
     award: "Matriculation (SSC), Science",
     school: "The Educators",
     place: "Karachi, Pakistan",
-    facts: ["Grade A-One — 746 / 850 marks", "Mathematics, Computer Studies, Physics, Chemistry"],
+    facts: ["Grade A-One, 746 / 850 marks", "Mathematics, Computer Studies, Physics, Chemistry"],
   },
 ];
 
@@ -77,7 +77,7 @@ export type Certificate = {
 
 export const certificates: Certificate[] = [
   {
-    title: "Experience letter — Junior Frontend Engineer",
+    title: "Experience letter: Junior Frontend Engineer",
     issuer: "DevsquarePK",
     date: "21 Apr 2025",
     detail:
@@ -94,7 +94,7 @@ export const certificates: Certificate[] = [
   {
     title: "Flutter Developer Intern",
     issuer: "Softex Solution",
-    date: "25 Nov 2025 — 25 Feb 2026",
+    date: "25 Nov 2025 – 25 Feb 2026",
     detail: "Certificate of internship for completing it with dedication and outstanding performance.",
     kind: "Work",
     image: {
@@ -107,7 +107,7 @@ export const certificates: Certificate[] = [
   {
     title: "Chancellor's Honour Roll, Spring 2024",
     issuer: "Mohammad Ali Jinnah University",
-    detail: "Certificate of achievement for outstanding academic performance — a 4.00 semester.",
+    detail: "Certificate of achievement for outstanding academic performance, for a 4.00 semester.",
     kind: "Academic",
     image: {
       src: "/credentials/maju-honour-roll.jpg",
@@ -129,7 +129,7 @@ export const certificates: Certificate[] = [
     },
   },
   {
-    title: "Jinnah League '24 — ACM-MAJU team",
+    title: "Jinnah League '24, ACM-MAJU team",
     issuer: "ACM-MAJU",
     date: "14–15 Dec 2024",
     detail: "Certificate of appreciation for contribution and dedication as an ACM-MAJU team member at Jinnah League '24.",
@@ -143,9 +143,9 @@ export const certificates: Certificate[] = [
   },
   {
     title: "2022 Complete Python Bootcamp: From Zero to Hero",
-    issuer: "Udemy — Jose Portilla",
+    issuer: "Udemy, Jose Portilla",
     date: "30 Nov 2022",
-    detail: "22 hours of Python, completed in 2022 — before university.",
+    detail: "22 hours of Python, completed in 2022, before university.",
     kind: "Course",
     image: {
       src: "/credentials/udemy-python.jpg",

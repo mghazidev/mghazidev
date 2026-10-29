@@ -13,11 +13,11 @@ const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grot
 const sans = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
-const title = `${profile.name} — ${profile.role}`;
+const title = `${profile.name} | ${profile.role}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mghazidev.vercel.app"),
-  title: { default: title, template: `%s — ${profile.name}` },
+  title: { default: title, template: `%s | ${profile.name}` },
   description: profile.summary,
   openGraph: {
     type: "website",
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="relative min-h-dvh overflow-x-clip">
         {/* Entrance animations are server-rendered at opacity 0 and revealed by
             JavaScript. Without JavaScript nothing would reveal them, and most of
-            the page would look empty — so show everything as-is instead. */}
+            the page would look empty, so show everything as-is instead. */}
         <noscript>
           <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
         </noscript>

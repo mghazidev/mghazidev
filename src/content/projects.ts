@@ -2,7 +2,7 @@
  * Every project on the site, as data.
  *
  * Each claim here was checked against the project's own code, commits or docs
- * before it was written down — a dependency in pubspec.yaml is not evidence a
+ * before it was written down, a dependency in pubspec.yaml is not evidence a
  * feature exists, so features are listed only where the code uses them.
  *
  * Media paths point under /public/work/<slug>/. A project with no media yet
@@ -31,7 +31,7 @@ export type Shot = {
   step?: string;
 };
 
-/** One product inside a larger project — MenuPK is three of them plus a marketing site. */
+/** One product inside a larger project, MenuPK is three of them plus a marketing site. */
 export type Surface = {
   title: string;
   summary: string;
@@ -63,7 +63,7 @@ export type Project = {
   metrics: { value: string; label: string }[];
   cover?: Shot;
   gallery: Shot[];
-  /** `poster` is shown before playback — the first frame is often an empty state. */
+  /** `poster` is shown before playback, the first frame is often an empty state. */
   /** `portrait` for phone recordings, which play in a device frame. */
   video?: { src: string; poster: string; caption: string; portrait?: boolean };
   repo?: string;
@@ -82,18 +82,18 @@ export const projects: Project[] = [
     title: "MenuPK",
     tagline: "A restaurant platform: a page and a menu for every restaurant, and the back office that runs its orders.",
     summary:
-      "DevsquarePK's startup product. I led its frontend: the portal diners order from, the portal restaurants run themselves from, and the back office that takes their orders — three products on one Next.js codebase.",
+      "DevsquarePK's startup product. I led its frontend: the portal diners order from, the portal restaurants run themselves from, and the back office that takes their orders. Three products on one Next.js codebase.",
     platform: "web",
     status: "production-ready",
     statusLabel: "Shipped in beta",
-    year: "2023 — 2025",
+    year: "2023 – 2025",
     context: "DevsquarePK",
-    role: "Frontend engineer — led the frontend across three products",
+    role: "Frontend engineer, leading the frontend across three products",
     accent: "#fb7185",
     problem:
       "Small restaurants, food carts and home chefs in Pakistan had little between a paper menu and an aggregator that takes a large cut of every order. DevsquarePK set out to give each of them a page, a menu and an ordering system of their own.",
     built:
-      "One Next.js and TypeScript codebase serving three products — a customer portal, a restaurant portal and an online-ordering back office — on a shared component kit, against the team's Express, MongoDB and Redis API. Separately, I built the marketing site.",
+      "One Next.js and TypeScript codebase serving three products (a customer portal, a restaurant portal and an online-ordering back office) on a shared component kit, against the team's Express, MongoDB and Redis API. Separately, I built the marketing site.",
     stack: [
       { layer: "Frontend", items: ["Next.js 14", "React 18", "TypeScript", "MUI", "Tailwind + Radix"] },
       { layer: "State and data", items: ["Jotai", "React Query", "axios", "WebSocket"] },
@@ -121,17 +121,17 @@ export const projects: Project[] = [
       { title: "Search and discovery", detail: "Diners search by dish, cuisine or restaurant, filter by cuisine and dining style, and sort by relevance, rating or distance." },
       { title: "A page for every restaurant", detail: "Menu, about, reviews, gallery and feedback, each restaurant on its own route." },
       { title: "Cart, checkout and tracking", detail: "Dishes and deals are customised in pop-ups, collected in a cart, checked out with a map-pinned address, then followed on a live timeline." },
-      { title: "Five-step onboarding", detail: "Register, restaurant details, location on a map, menu upload and photos — a restaurant is live at the end of it." },
+      { title: "Five-step onboarding", detail: "Register, restaurant details, location on a map, menu upload and photos. A restaurant is live at the end of it." },
       { title: "Menu management", detail: "Items, categories, deals and add-ons, with a CSV upload for menus that already exist in a spreadsheet." },
       { title: "A QR code for every table", detail: "Each restaurant gets a QR code to its menu, printable straight from the dashboard." },
-      { title: "Live new orders", detail: "Orders appear as they are placed, then move through accepted, preparing, dispatched and delivered — or rejected." },
+      { title: "Live new orders", detail: "Orders appear as they are placed, then move through accepted, preparing, dispatched and delivered, or rejected." },
       { title: "Delivery zones and coupons", detail: "Restaurants set delivery areas with their own minimum order, charge and time, and run coupon campaigns." },
     ],
     decisions: [
       {
         title: "Feature modules for three products",
         detail:
-          "The app is split into feature modules — restaurant, dashboard, onboarding, online ordering — each owning its components, pages and data hooks. I started the dashboard module and wrote most of it and the restaurant module, so three products grew in one codebase without work on one spilling into another.",
+          "The app is split into feature modules (restaurant, dashboard, onboarding, online ordering), each owning its components, pages and data hooks. I started the dashboard module and wrote most of it and the restaurant module, so three products grew in one codebase without work on one spilling into another.",
       },
       {
         title: "One component kit, three products",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
       {
         title: "Tracking that keeps itself current",
         detail:
-          "The order page asks for the order's status every ten seconds and maps it onto a five-step timeline — placed, accepted, preparing, out for delivery, delivered — so a diner never has to refresh to see progress.",
+          "The order page asks for the order's status every ten seconds and maps it onto a five-step timeline (placed, accepted, preparing, out for delivery, delivered), so a diner never has to refresh to see progress.",
       },
       {
         title: "An order you can hear",
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     confidential: true,
     flagship: true,
     surfacesIntro:
-      "The platform one product at a time — from the site that brings restaurants in, through the diner's order, to the back office that runs it.",
+      "The platform one product at a time: from the site that brings restaurants in, through the diner's order, to the back office that runs it.",
     surfaces: [
       {
         title: "Marketing site",
@@ -174,7 +174,7 @@ export const projects: Project[] = [
         video: {
           src: "/work/menupk/site-journey.webm",
           poster: "/work/menupk/site-digitize.png",
-          caption: "The full marketing site, top to bottom — scroll-driven sections built with GSAP.",
+          caption: "The full marketing site, top to bottom, with scroll-driven sections built with GSAP.",
         },
         shots: [
           {
@@ -240,7 +240,7 @@ export const projects: Project[] = [
       {
         title: "Ordering flow",
         summary:
-          "One order from menu to doorstep. I built this journey in code — the menu page, the item and deal pop-ups, the cart, checkout and the tracking page.",
+          "One order from menu to doorstep. I built this journey in code: the menu page, the item and deal pop-ups, the cart, checkout and the tracking page.",
         flow: true,
         shots: [
           {
@@ -259,7 +259,7 @@ export const projects: Project[] = [
             alt: "Supreme Nachos pop-up: choose a variant, add sauces, write special instructions, set the quantity, Add to Cart for Rs.2500",
             frame: "none",
             step: "Customise a dish",
-            caption: "Variant, add-ons, instructions and quantity — the price updates on the button.",
+            caption: "Variant, add-ons, instructions and quantity, and the price updates on the button.",
           },
           {
             src: "/work/menupk/flow-deal.png",
@@ -268,7 +268,7 @@ export const projects: Project[] = [
             alt: "Family Pizza Deal pop-up: choose up to two small pizza flavours with a quantity for each",
             frame: "none",
             step: "Build a deal",
-            caption: "Deals set their own limits — here, two flavours of small pizza.",
+            caption: "Deals set their own limits. Here, two flavours of small pizza.",
           },
           {
             src: "/work/menupk/flow-cart-drawer.png",
@@ -304,7 +304,7 @@ export const projects: Project[] = [
             alt: "Order tracking: a timeline from order placed through accepted, preparing and out for delivery to delivered, above the order details",
             frame: "browser",
             step: "Track the order",
-            caption: "Placed, accepted, preparing, out for delivery, delivered — the page checks for news every ten seconds.",
+            caption: "Placed, accepted, preparing, out for delivery, delivered. The page checks for news every ten seconds.",
           },
         ],
       },
@@ -367,7 +367,7 @@ export const projects: Project[] = [
       {
         title: "Design language",
         summary:
-          "One palette for every surface — brand reds, secondary yellows, neutrals — carried into code as the MUI theme behind the shared component kit.",
+          "One palette for every surface (brand reds, secondary yellows, neutrals), carried into code as the MUI theme behind the shared component kit.",
         shots: [
           {
             src: "/work/menupk/colour-system.png",
@@ -385,13 +385,13 @@ export const projects: Project[] = [
     title: "Softex Chat",
     tagline: "Real-time messaging for a company workspace.",
     summary:
-      "Team chat with replies, forwarding, reactions, read receipts and group roles — live over Socket.IO.",
+      "Team chat with replies, forwarding, reactions, read receipts and group roles, live over Socket.IO.",
     platform: "mobile",
     status: "production-ready",
     statusLabel: "Production-ready",
     year: "2026",
     context: "Softex Solution",
-    role: "Flutter developer — UI system, state and real-time integration",
+    role: "Flutter developer: UI system, state and real-time integration",
     accent: "#8b5cf6",
     problem:
       "The company wanted its own internal messenger: conversations, groups and media tied to its own accounts and backend rather than a consumer chat app.",
@@ -429,7 +429,7 @@ export const projects: Project[] = [
       {
         title: "Two transports, two jobs",
         detail:
-          "REST for anything that must be complete and ordered — history, auth, uploads. The socket only for what is live — new messages, typing, presence.",
+          "REST for anything that must be complete and ordered: history, auth, uploads. The socket only for what is live: new messages, typing, presence.",
       },
     ],
     metrics: [
@@ -459,7 +459,7 @@ export const projects: Project[] = [
         height: 1688,
         alt: "A conversation with a quoted reply, a shared PDF with a reaction, read receipts and a typing indicator",
         frame: "phone",
-        caption: "Replies, files, reactions and read receipts \u2014 live over the socket.",
+        caption: "Replies, files, reactions and read receipts, live over the socket.",
       },
       {
         src: "/work/softex-chat/group-info.jpg",
@@ -485,13 +485,13 @@ export const projects: Project[] = [
     title: "Finance Intelligence",
     tagline: "A local-first finance assistant that never invents a number.",
     summary:
-      "Bank statements in; spending, commitments and next month's cost out. A local LLM answers questions by calling the financial engine — never by guessing.",
+      "Bank statements in; spending, commitments and next month's cost out. A local LLM answers questions by calling the financial engine, never by guessing.",
     platform: "web",
     status: "open-source",
     statusLabel: "Open source",
     year: "2026",
     context: "Personal product",
-    role: "Solo — product, architecture, backend, frontend",
+    role: "Solo: product, architecture, backend, frontend",
     accent: "#22d3ee",
     problem:
       "Finance apps either need your bank login or ask an AI to read your money and hope it adds up. Neither is acceptable for data this sensitive.",
@@ -558,7 +558,7 @@ export const projects: Project[] = [
         height: 310,
         alt: "The assistant's answer with two tool calls, Read spending by category and Read your commitments, shown above it",
         frame: "none",
-        caption: "The assistant asks the engine for the figure instead of producing one — and shows which tools it used.",
+        caption: "The assistant asks the engine for the figure instead of producing one, and shows which tools it used.",
       },
       {
         src: "/work/finance-intelligence/uncertain-transaction.png",
@@ -582,7 +582,7 @@ export const projects: Project[] = [
         height: 1350,
         alt: "The commitments page offering rent, Netflix and groceries as detected commitments, with salary correctly left out",
         frame: "browser",
-        caption: "Detected commitments are offered, not assumed — and salary isn't one.",
+        caption: "Detected commitments are offered, not assumed, and salary isn't one.",
       },
       {
         src: "/work/finance-intelligence/transactions.png",
@@ -596,7 +596,7 @@ export const projects: Project[] = [
     video: {
       src: "/work/finance-intelligence/journey.webm",
       poster: "/work/finance-intelligence/upload.png",
-      caption: "Upload, review, dashboard and commitments — one statement import, start to finish.",
+      caption: "Upload, review, dashboard and commitments: one statement import, start to finish.",
     },
     repo: "https://github.com/mghazidev/finance-intelligence",
   },
@@ -605,18 +605,18 @@ export const projects: Project[] = [
     title: "Tiny Giggle",
     tagline: "A baby journal, community and care marketplace in one app.",
     summary:
-      "Growth tracking, a cloud photo album, a reels feed, music, shopping and booking babysitters — fourteen feature modules behind one parent-facing app.",
+      "Growth tracking, a cloud photo album, a reels feed, music, shopping and booking babysitters. Fourteen feature modules behind one parent-facing app.",
     platform: "mobile",
     status: "complete",
     statusLabel: "Feature-complete",
     year: "2026",
     context: "Product build",
-    role: "Flutter developer — full refactor, design and API integration",
+    role: "Flutter developer: full refactor, design and API integration",
     accent: "#f472b6",
     problem:
       "New parents juggle a photo app, a notes app, forums, shops and word of mouth for care. The brief was one place for all of it.",
     built:
-      "A modular Flutter app on GetX where each area — baby, community, reels, music, shopping, messages, AI assistant — is its own module with controllers, models and views, talking to one API with Pusher for live updates.",
+      "A modular Flutter app on GetX where each area (baby, community, reels, music, shopping, messages, AI assistant) is its own module with controllers, models and views, talking to one API with Pusher for live updates.",
     stack: [
       { layer: "Client", items: ["Flutter", "Dart", "GetX"] },
       { layer: "Realtime", items: ["Pusher Channels"] },
@@ -737,13 +737,13 @@ export const projects: Project[] = [
     title: "Lecture AI Companion",
     tagline: "Turns a slide deck and a live lecture into structured notes.",
     summary:
-      "Upload the slides, press record, and notes are written per slide as the lecture happens — transcription and the language model both run on your own machine.",
+      "Upload the slides, press record, and notes are written per slide as the lecture happens. Transcription and the language model both run on your own machine.",
     platform: "web",
     status: "open-source",
     statusLabel: "Open source",
     year: "2026",
     context: "Personal product",
-    role: "Solo — product, architecture, backend, frontend",
+    role: "Solo: product, architecture, backend, frontend",
     accent: "#a3e635",
     problem:
       "Slides carry the outline; the explanation around them is where the content is, and it's exactly what gets missed while you're writing.",
@@ -779,7 +779,7 @@ export const projects: Project[] = [
       {
         title: "Notes from the explanation",
         detail:
-          "When the lecturer moves on or recording stops, a local model writes notes from what was said — not just what was on the slide.",
+          "When the lecturer moves on or recording stops, a local model writes notes from what was said, not just what was on the slide.",
       },
       {
         title: "An editor you own",
@@ -838,7 +838,7 @@ export const projects: Project[] = [
         alt: "Notes for slide 2: the slide's own bullets, followed by generated notes giving memory access at 100 nanoseconds and disk or network access at 100 milliseconds",
         frame: "none",
         caption:
-          "The generated notes carry the latency figures the lecturer said aloud — none of them are on the slide.",
+          "The generated notes carry the latency figures the lecturer said aloud. None of them are on the slide.",
       },
       {
         src: "/work/lecture-ai-companion/landing.png",
@@ -846,14 +846,14 @@ export const projects: Project[] = [
         height: 1350,
         alt: "Landing page: Focus on the lecture. Keep the notes. A drop zone for lecture slides, and an empty recent lectures list",
         frame: "browser",
-        caption: "Everything stays on the machine — the landing page says so up front.",
+        caption: "Everything stays on the machine, and the landing page says so up front.",
       },
     ],
     video: {
       src: "/work/lecture-ai-companion/journey.webm",
       poster: "/work/lecture-ai-companion/recording.png",
       caption:
-        "Upload a deck, record the lecture, and the notes write themselves — transcription and generation all on-device.",
+        "Upload a deck, record the lecture, and the notes write themselves. Transcription and generation all on-device.",
     },
     repo: "https://github.com/mghazidev/lecture-ai-companion",
   },
@@ -868,10 +868,10 @@ export const projects: Project[] = [
     statusLabel: "Production-ready",
     year: "2026",
     context: "Softex Solution",
-    role: "Flutter developer — screens, state and API integration",
+    role: "Flutter developer: screens, state and API integration",
     accent: "#f59e0b",
     problem:
-      "Local sellers needed one app to list products, reach buyers and pay to stand out — without building a store of their own.",
+      "Local sellers needed one app to list products, reach buyers and pay to stand out, without building a store of their own.",
     built:
       "A GetX app organised into controllers, repositories and pages, with Pusher powering buyer–seller chat and paid ad plans for promoting listings.",
     stack: [
@@ -913,7 +913,7 @@ export const projects: Project[] = [
       src: "/work/buy-n-grab/home.jpg",
       width: 720,
       height: 1526,
-      alt: "Buy n Grab home: a search bar and category tiles \u2014 animals, beauty, education, electronics, exchange and more",
+      alt: "Buy n Grab home: a search bar and category tiles for animals, beauty, education, electronics, exchange and more",
       frame: "phone",
     },
     gallery: [
@@ -982,12 +982,12 @@ export const projects: Project[] = [
     statusLabel: "Production-ready",
     year: "2026",
     context: "Softex Solution",
-    role: "Flutter developer — glass UI redesign, refactors and API integration",
+    role: "Flutter developer: glass UI redesign, refactors and API integration",
     accent: "#34d399",
     problem:
       "Leave requests, standups and project tracking lived in different tools, so nobody had one view of the team.",
     built:
-      "A GetX app covering the whole HR loop — leave, people, projects, meetings and reporting — with charts for team and personal reports.",
+      "A GetX app covering the whole HR loop (leave, people, projects, meetings and reporting), with charts for team and personal reports.",
     stack: [
       { layer: "Client", items: ["Flutter", "Dart", "GetX"] },
       { layer: "Data", items: ["REST (http)", "shared_preferences"] },
@@ -1037,7 +1037,7 @@ export const projects: Project[] = [
     surfaces: [
       {
         title: "An employee's day",
-        summary: "Check in, see what is left of the leave balance, and file the daily standup — each a tap from the dashboard.",
+        summary: "Check in, see what is left of the leave balance, and file the daily standup, each a tap from the dashboard.",
         shots: [
           {
             src: "/work/softex-hrm/dashboard.jpg",
@@ -1067,7 +1067,7 @@ export const projects: Project[] = [
             alt: "Apply Leave: leave type, dates, duration and reason",
             frame: "phone",
             step: "Apply",
-            caption: "Type, dates and a reason \u2014 the balance is shown up front.",
+            caption: "Type, dates and a reason, with the balance shown up front.",
           },
           {
             src: "/work/softex-hrm/leave-review.jpg",
@@ -1101,18 +1101,18 @@ export const projects: Project[] = [
     title: "Daily Cook",
     tagline: "A budget-first weekly meal planner.",
     summary:
-      "Set a weekly budget and get a week of meals that fits it — then swap, shop and cook from the same plan. A Flutter app on a FastAPI and PostgreSQL backend, running on Android.",
+      "Set a weekly budget and get a week of meals that fits it, then swap, shop and cook from the same plan. A Flutter app on a FastAPI and PostgreSQL backend, running on Android.",
     platform: "mobile",
     status: "in-progress",
     statusLabel: "In progress",
     year: "2026",
     context: "Personal product",
-    role: "Solo — product, architecture, backend, mobile",
+    role: "Solo: product, architecture, backend, mobile",
     accent: "#fb923c",
     problem:
       "Meal planners start from recipes and leave the cost as a surprise. Daily Cook starts from the budget.",
     built:
-      "A FastAPI modular monolith — catalogue, households and planning — with a pricing and planner engine, PostgreSQL and Supabase Auth. The Flutter client has its own design system and covers onboarding, the weekly plan, swaps, the shopping list, recipes and a cook mode.",
+      "A FastAPI modular monolith (catalogue, households and planning) with a pricing and planner engine, PostgreSQL and Supabase Auth. The Flutter client has its own design system and covers onboarding, the weekly plan, swaps, the shopping list, recipes and a cook mode.",
     stack: [
       { layer: "Client", items: ["Flutter", "Riverpod", "go_router", "dio"] },
       { layer: "Backend", items: ["FastAPI", "PostgreSQL 17", "Alembic"] },
@@ -1143,7 +1143,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "A modular monolith",
-        detail: "Catalogue, households and planning are separate modules in one deployable — boundaries now, without microservice overhead.",
+        detail: "Catalogue, households and planning are separate modules in one deployable: boundaries now, without microservice overhead.",
       },
       {
         title: "Quality gates from day one",
@@ -1237,12 +1237,12 @@ export const projects: Project[] = [
     statusLabel: "Product concept",
     year: "2025",
     context: "Personal product",
-    role: "Solo — product, design, frontend",
+    role: "Solo: product, design, frontend",
     accent: "#4ade80",
     problem:
       "Booking a sports ground usually means phoning the venue and hoping a slot is free. Owners track bookings on paper and can't see what earns them money.",
     built:
-      "The whole product surface as a Next.js front end on shadcn/ui — landing page, a gated three-step booking wizard, and an owner dashboard with Recharts analytics — running on mock data while the backend was prototyped separately.",
+      "The whole product surface as a Next.js front end on shadcn/ui (landing page, a gated three-step booking wizard, and an owner dashboard with Recharts analytics), running on mock data while the backend was prototyped separately.",
     stack: [
       { layer: "Web", items: ["Next.js 15", "TypeScript", "Tailwind", "shadcn/ui"] },
       { layer: "UI", items: ["Radix", "Recharts", "react-day-picker"] },
@@ -1262,7 +1262,7 @@ export const projects: Project[] = [
     features: [
       {
         title: "Three-step booking",
-        detail: "Sport, date and slot; then contact details; then a summary and payment method — ending on a confirmation.",
+        detail: "Sport, date and slot; then contact details; then a summary and payment method, ending on a confirmation.",
       },
       {
         title: "Slots that show their state",
@@ -1274,7 +1274,7 @@ export const projects: Project[] = [
       },
       {
         title: "Recent bookings",
-        detail: "A searchable table with each booking's status — confirmed, pending or completed.",
+        detail: "A searchable table with each booking's status: confirmed, pending or completed.",
       },
       {
         title: "Marketing site",
@@ -1312,7 +1312,7 @@ export const projects: Project[] = [
         height: 1350,
         alt: "Booking step one: Football selected, October 29th, the 16:00 to 18:00 peak slot chosen, two slots unavailable, 10 players",
         frame: "browser",
-        caption: "Step one — taken slots are disabled, and peak hours are labelled.",
+        caption: "Step one: taken slots are disabled, and peak hours are labelled.",
       },
       {
         src: "/work/zyturf/booking-payment.png",
@@ -1320,7 +1320,7 @@ export const projects: Project[] = [
         height: 1350,
         alt: "Booking step three: a summary of ground, date, time, sport and players with a total of Rs. 3,000, and Digital Wallet selected",
         frame: "browser",
-        caption: "Step three — the summary before payment.",
+        caption: "Step three: the summary before payment.",
       },
       {
         src: "/work/zyturf/booking-confirmed.png",

@@ -8,7 +8,7 @@ import Image from "next/image";
  * The hero portrait: a framed photo that tilts toward the pointer, with a glow
  * behind it and two chips floating at different depths in front.
  *
- * Tilt is a pointer effect only — touch screens and reduced-motion users get
+ * Tilt is a pointer effect only, touch screens and reduced-motion users get
  * the same layout, standing still.
  */
 export function Portrait() {

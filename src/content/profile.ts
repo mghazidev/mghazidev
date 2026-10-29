@@ -40,12 +40,21 @@ export type Role = {
 
 export const experience: Role[] = [
   {
-    title: "Flutter Developer",
+    title: "MERN Stack & Mobile Developer",
     company: "Softex Solution",
     place: "United States · Remote",
-    period: "Nov 2025 — Apr 2026",
+    period: "Apr 2026",
     points: [
-      "Joined as an intern for three months, then stayed on full-time for a month.",
+      "Full-time after my internship, working across Softex's web and mobile products.",
+      "Web on the MERN stack (MongoDB, Express, React, Node.js); mobile in Flutter.",
+    ],
+  },
+  {
+    title: "Flutter Developer Intern",
+    company: "Softex Solution",
+    place: "United States · Remote",
+    period: "Nov 2025 – Feb 2026",
+    points: [
       "Built three mobile apps in Flutter and Dart: Buy n Grab, an HR app, and a real-time team chat.",
       "Connected them to REST APIs and live channels (Socket.IO, Pusher), with GetX and Riverpod for state.",
       "Redesigned the HR app on a shared glass UI kit and refactored its leave, reports and projects screens.",
@@ -55,7 +64,7 @@ export const experience: Role[] = [
     title: "WordPress Developer",
     company: "Freelance",
     place: "Remote",
-    period: "Feb — Mar 2025",
+    period: "Feb – Mar 2025",
     points: [
       "Delivered a complete business website, customising theme and plugins to the client's brand.",
     ],
@@ -64,7 +73,7 @@ export const experience: Role[] = [
     title: "Junior Frontend Engineer",
     company: "DevsquarePK",
     place: "Munich, Germany · Remote",
-    period: "Nov 2023 — Apr 2025",
+    period: "Nov 2023 – Apr 2025",
     points: [
       "Led frontend development of the company's restaurant management suite: a SaaS ordering portal for restaurants, and back-office apps for online ordering and point of sale.",
       "Shaped the product from scratch for web and mobile, including a presentational layer kept consistent and scalable across every interface.",

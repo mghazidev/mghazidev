@@ -63,8 +63,8 @@ export function Surfaces({ surfaces, intro }: { surfaces: Surface[]; intro?: str
 
 /**
  * Column span on the six-column grid: phones take two columns (three to a
- * row), screens take half. A lone screen takes two thirds — beside phones, or
- * on its own without stretching a sparse frame — and an odd screen out leads
+ * row), screens take half. A lone screen takes two thirds, beside phones, or
+ * on its own without stretching a sparse frame, and an odd screen out leads
  * full width.
  */
 function span(shot: Shot, index: number, shots: Shot[]): string {

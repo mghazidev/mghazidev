@@ -25,7 +25,7 @@ const SOURCES: PrincipleSource[] = [
   },
   {
     title: "Honest about uncertainty",
-    belief: "When the data can't say, the interface says so — it never fills the gap with a confident guess.",
+    belief: "When the data can't say, the interface says so. It never fills the gap with a confident guess.",
     evidence: [{ project: "finance-intelligence", decision: "Uncertainty stays uncertain" }],
   },
   {
@@ -57,7 +57,7 @@ const SOURCES: PrincipleSource[] = [
   },
   {
     title: "Prove it, then write it down",
-    belief: "Gates, tests and written decisions — so the reasoning survives longer than the code.",
+    belief: "Gates, tests and written decisions, so the reasoning survives longer than the code.",
     evidence: [
       { project: "daily-cook", decision: "Quality gates from day one" },
       { project: "zyturf", decision: "Prototype the backend twice before committing" },

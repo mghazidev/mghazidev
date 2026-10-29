@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, FolderGit2, Lock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Building2, FolderGit2 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -31,7 +31,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   const { slug } = await props.params;
   const project = getProject(slug);
   // With cacheComponents on, `dynamicParams` no longer exists, so an unknown
-  // slug is not rejected automatically — it has to be turned away here.
+  // slug is not rejected automatically, it has to be turned away here.
   if (!project) notFound();
 
   const next = nextProject(project.slug);
@@ -83,8 +83,8 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
           )}
           {project.confidential && (
             <p className="inline-flex items-center gap-2 text-faint">
-              <Lock aria-hidden className="size-3.5" />
-              Built at {project.context}. Source code is private.
+              <Building2 aria-hidden className="size-3.5" />
+              Built at {project.context}.
             </p>
           )}
         </div>
@@ -92,7 +92,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
 
       {/* ── Hero visual ────────────────────────────────────────── */}
       {/* Only when there's a real screen to show. Without one, the architecture
-          under "How it's built" is the visual — repeating it here said the
+          under "How it's built" is the visual, repeating it here said the
           same thing twice. */}
       {project.cover && (
         <section aria-label="Overview visual" className="mx-auto max-w-6xl px-5 sm:px-8">

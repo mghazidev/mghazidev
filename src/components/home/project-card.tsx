@@ -1,4 +1,4 @@
-import { ArrowUpRight, Lock } from "lucide-react";
+import { ArrowUpRight, Building2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -76,7 +76,7 @@ export function ProjectCard({
           <span className="text-muted">{project.statusLabel}</span>
           {project.confidential && (
             <span className="ml-auto inline-flex items-center gap-1 normal-case tracking-normal text-faint">
-              <Lock aria-hidden className="size-3" />
+              <Building2 aria-hidden className="size-3" />
               {project.context}
             </span>
           )}

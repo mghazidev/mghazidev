@@ -3,7 +3,7 @@ import type { Project } from "@/content/projects";
 /**
  * A project's architecture as a list of connections.
  *
- * Each edge is drawn as its own row — `Flutter ──ws──▶ Socket.IO` — rather than
+ * Each edge is drawn as its own row, `Flutter ──ws──▶ Socket.IO`, rather than
  * laying the nodes out as a chain. A chain implies every node talks to the
  * next, which is false for star-shaped systems (one app, two backends) and
  * would misdescribe most of these projects.

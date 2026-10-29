@@ -34,7 +34,7 @@ export function About() {
             </p>
             <p>
               I enjoy the details users never notice but always feel: screens that stay in sync, numbers that are
-              always right, and errors that explain what happened. Since 2026 I&apos;ve been studying in Germany —
+              always right, and errors that explain what happened. Since 2026 I&apos;ve been studying in Germany,
               and learning German along the way.
             </p>
           </div>

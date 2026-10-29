@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { principles } from "@/content/principles";
 
 /**
- * Rules, each followed by the case-study decisions where it was applied — so a
+ * Rules, each followed by the case-study decisions where it was applied, so a
  * reader can check every claim rather than take it on trust.
  */
 export function Principles() {
