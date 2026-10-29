@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { Architecture } from "@/components/architecture";
 import { Frame } from "@/components/case/frame";
+import { Surfaces } from "@/components/case/surfaces";
 import { Reveal } from "@/components/reveal";
 import { getProject, nextProject, projects } from "@/content/projects";
 
@@ -177,6 +178,8 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
           ))}
         </ol>
       </section>
+
+      {project.surfaces && <Surfaces surfaces={project.surfaces} />}
 
       {/* ── Gallery and video ──────────────────────────────────── */}
       {(project.gallery.length > 0 || project.video) && (

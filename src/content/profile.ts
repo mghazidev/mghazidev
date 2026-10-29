@@ -74,7 +74,7 @@ export const experience: Role[] = [
     points: [
       "Led frontend development of the company's restaurant management suite: a SaaS ordering portal for restaurants, and back-office apps for online ordering and point of sale.",
       "Shaped the product from scratch for web and mobile, including a presentational layer kept consistent and scalable across every interface.",
-      "Built with Next.js, React, TypeScript and MUI; authentication with NextAuth; reusable components documented in Storybook.",
+      "Built the shared component kit the products are made from, on Next.js, React, TypeScript and MUI, and the marketing site in Next.js with GSAP.",
     ],
   },
 ];

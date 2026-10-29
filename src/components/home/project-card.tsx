@@ -12,14 +12,24 @@ import type { Project } from "@/content/projects";
  * architecture, so a project still being captured never renders as an empty
  * frame.
  */
-export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
-  const chips = project.stack.flatMap((layer) => layer.items).slice(0, featured ? 5 : 4);
+export function ProjectCard({
+  project,
+  featured = false,
+  flagship = false,
+}: {
+  project: Project;
+  featured?: boolean;
+  /** Full-width lead card: image beside the text on wide screens, with the role and headline figures. */
+  flagship?: boolean;
+}) {
+  const wide = featured || flagship;
+  const chips = project.stack.flatMap((layer) => layer.items).slice(0, wide ? 5 : 4);
 
   return (
     <Link
       href={`/work/${project.slug}`}
       style={{ "--accent": project.accent } as React.CSSProperties}
-      className="glass group relative flex h-full flex-col overflow-hidden rounded-3xl p-5 transition-[transform,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-[color-mix(in_oklab,var(--accent)_45%,transparent)] sm:p-6"
+      className={`glass group relative flex h-full flex-col overflow-hidden rounded-3xl p-5 transition-[transform,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-[color-mix(in_oklab,var(--accent)_45%,transparent)] sm:p-6 ${flagship ? "lg:flex-row lg:items-stretch lg:gap-10" : ""}`}
     >
       {/* Accent glow that follows the card's own colour. */}
       <span
@@ -27,13 +37,21 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
         className="pointer-events-none absolute -right-24 -top-24 size-64 rounded-full bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--accent)_30%,transparent),transparent)] opacity-60 transition-opacity duration-500 group-hover:opacity-100"
       />
 
-      <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-ink-2">
+      <div
+        className={`relative mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-ink-2 ${flagship ? "lg:mb-0 lg:w-3/5 lg:shrink-0" : ""}`}
+      >
         {project.cover ? (
           <Image
             src={project.cover.src}
             alt={project.cover.alt}
             fill
-            sizes={featured ? "(min-width: 1024px) 560px, 100vw" : "(min-width: 1024px) 360px, 100vw"}
+            sizes={
+              flagship
+                ? "(min-width: 1024px) 680px, 100vw"
+                : featured
+                  ? "(min-width: 1024px) 560px, 100vw"
+                  : "(min-width: 1024px) 360px, 100vw"
+            }
             className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
           />
         ) : (
@@ -43,7 +61,8 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
         )}
       </div>
 
-      <div className="relative flex flex-1 flex-col">
+      <div className={`relative flex flex-1 flex-col ${flagship ? "lg:py-2" : ""}`}>
+        {flagship && <p className="eyebrow mb-4">Flagship · company product</p>}
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--accent)]">
           <span>{project.platform}</span>
           <span aria-hidden className="text-faint">·</span>
@@ -66,8 +85,19 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
           />
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-muted text-pretty">
-          {featured ? project.summary : project.tagline}
+          {wide ? project.summary : project.tagline}
         </p>
+
+        {flagship && (
+          <dl className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-line bg-line">
+            {project.metrics.map((m) => (
+              <div key={m.label} className="flex flex-col-reverse bg-ink-2 px-3 py-2.5">
+                <dt className="font-mono text-[11px] text-faint">{m.label}</dt>
+                <dd className="font-display text-xl font-semibold text-fg">{m.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
 
         <ul className="mt-auto flex flex-wrap gap-1.5 pt-5" aria-label="Built with">
           {chips.map((chip) => (

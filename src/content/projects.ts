@@ -29,6 +29,19 @@ export type Shot = {
   caption?: string;
 };
 
+/**
+ * One product inside a larger project — MenuPK is three of them plus a
+ * marketing site. `source` says what the screens are: running code captured
+ * locally, or frames from the product's Figma file. Readers are told which.
+ */
+export type Surface = {
+  title: string;
+  summary: string;
+  source: "live" | "design";
+  shots: Shot[];
+  video?: { src: string; poster: string; caption: string };
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -56,9 +69,243 @@ export type Project = {
   repo?: string;
   /** Company work: screens are redacted and the code is not public. */
   confidential?: boolean;
+  /** Shown full width at the top of the work grid. At most one project. */
+  flagship?: boolean;
+  surfaces?: Surface[];
 };
 
 export const projects: Project[] = [
+  {
+    slug: "menupk",
+    title: "MenuPK",
+    tagline: "A restaurant platform: a page and a menu for every restaurant, and the back office that runs its orders.",
+    summary:
+      "DevsquarePK's startup product. I led its frontend: the portal diners order from, the portal restaurants run themselves from, and the back office that takes their orders — three products on one Next.js codebase.",
+    platform: "web",
+    status: "production-ready",
+    statusLabel: "Shipped in beta",
+    year: "2023 — 2025",
+    context: "DevsquarePK",
+    role: "Frontend engineer — led the frontend across three products",
+    accent: "#fb7185",
+    problem:
+      "Small restaurants, food carts and home chefs in Pakistan had little between a paper menu and an aggregator that takes a large cut of every order. DevsquarePK set out to give each of them a page, a menu and an ordering system of their own.",
+    built:
+      "One Next.js and TypeScript codebase serving three products — a customer portal, a restaurant portal and an online-ordering back office — on a shared component kit, against the team's Express, MongoDB and Redis API. Separately, I built the marketing site.",
+    stack: [
+      { layer: "Frontend", items: ["Next.js 14", "React 18", "TypeScript", "MUI", "Tailwind + Radix"] },
+      { layer: "State and data", items: ["Jotai", "React Query", "axios", "WebSocket"] },
+      { layer: "Maps and charts", items: ["Google Maps + Places", "Chart.js"] },
+      { layer: "Backend (team)", items: ["Express", "MongoDB", "Redis", "Docker Compose on AWS EC2"] },
+      { layer: "Marketing site", items: ["Next.js", "Tailwind", "GSAP", "Framer Motion"] },
+    ],
+    architecture: {
+      nodes: [
+        { id: "web", label: "Next.js", detail: "3 products" },
+        { id: "api", label: "Express API", detail: "TypeScript" },
+        { id: "db", label: "MongoDB", detail: "restaurants · orders" },
+        { id: "redis", label: "Redis", detail: "tokens" },
+        { id: "maps", label: "Google Maps", detail: "places · zones" },
+      ],
+      edges: [
+        { from: "web", to: "api", via: "REST" },
+        { from: "api", to: "web", via: "ws · new order" },
+        { from: "api", to: "db", via: "mongoose" },
+        { from: "api", to: "redis", via: "cache" },
+        { from: "web", to: "maps", via: "js api" },
+      ],
+    },
+    features: [
+      { title: "Search and discovery", detail: "Diners search by dish, cuisine or restaurant, filter by cuisine and dining style, and sort by relevance, rating or distance." },
+      { title: "A page for every restaurant", detail: "Menu, about, reviews, gallery and feedback, each restaurant on its own route." },
+      { title: "Checkout and order tracking", detail: "Orders go from the restaurant's menu through checkout to a page that follows that order." },
+      { title: "Five-step onboarding", detail: "Register, restaurant details, location on a map, menu upload and photos — a restaurant is live at the end of it." },
+      { title: "Menu management", detail: "Items, categories, deals and add-ons, with a CSV upload for menus that already exist in a spreadsheet." },
+      { title: "A QR code for every table", detail: "Each restaurant gets a QR code to its menu, printable straight from the dashboard." },
+      { title: "Live new orders", detail: "Orders appear as they are placed, then move through accepted, preparing, dispatched and delivered — or rejected." },
+      { title: "Delivery zones and coupons", detail: "Restaurants set delivery areas with their own minimum order, charge and time, and run coupon campaigns." },
+    ],
+    decisions: [
+      {
+        title: "Feature modules for three products",
+        detail:
+          "The app is split into feature modules — restaurant, dashboard, onboarding, online ordering — each owning its components, pages and data hooks. I started the dashboard module and wrote most of it and the restaurant module, so three products grew in one codebase without work on one spilling into another.",
+      },
+      {
+        title: "One component kit, three products",
+        detail:
+          "menu-ui: about twenty shared components (buttons, cards, drawer, modal, navbar, map, skeletons) and 132 icon components on one MUI theme, so the diner's portal and the restaurant's back office read as the same product.",
+      },
+      {
+        title: "An order you can hear",
+        detail:
+          "New orders arrive over a WebSocket; the back office shows a notification and rings a bell, so kitchen staff notice an order without watching the screen.",
+      },
+    ],
+    metrics: [
+      { value: "75", label: "routes" },
+      { value: "3", label: "products" },
+      { value: "~800", label: "commits mine" },
+    ],
+    cover: {
+      src: "/work/menupk/site-hero.png",
+      width: 2160,
+      height: 1350,
+      alt: "The MenuPK marketing site: Revitalize your Restaurants Online Presence with Menu Pk, above a preview of the online-ordering dashboard",
+      frame: "browser",
+    },
+    gallery: [],
+    confidential: true,
+    flagship: true,
+    surfaces: [
+      {
+        title: "Marketing site",
+        summary:
+          "Mine alone: I took the site's Webflow design into Next.js and built its GSAP scroll sequences. It sells the product and sends restaurants into onboarding.",
+        source: "live",
+        video: {
+          src: "/work/menupk/site-journey.webm",
+          poster: "/work/menupk/site-digitize.png",
+          caption:
+            "The whole page, run locally from its repository with analytics blocked. One mock-up showing a person's contact details is blurred.",
+        },
+        shots: [
+          {
+            src: "/work/menupk/site-qr.jpg",
+            width: 2160,
+            height: 1350,
+            alt: "Marketing site section on quick setup and the integrated QR code, beside a Scan to view menu table card",
+            frame: "browser",
+            caption: "Feature sections, each paired with the product screen it describes.",
+          },
+          {
+            src: "/work/menupk/site-mobile.png",
+            width: 585,
+            height: 1266,
+            alt: "The marketing site's hero at phone width",
+            frame: "phone",
+            caption: "The same hero at phone width.",
+          },
+        ],
+      },
+      {
+        title: "Customer portal",
+        summary:
+          "Where diners find a restaurant, read its menu and order. Desktop and mobile were designed together; I built the restaurant pages, checkout and order tracking.",
+        source: "design",
+        shots: [
+          {
+            src: "/work/menupk/customer-home.jpg",
+            width: 2160,
+            height: 1350,
+            alt: "Customer portal home: a search bar over a kitchen photo, a row of top cuisines, and nearby restaurants with delivery times and discounts",
+            frame: "browser",
+          },
+          {
+            src: "/work/menupk/customer-restaurant.jpg",
+            width: 2160,
+            height: 1350,
+            alt: "A restaurant page with its rating breakdown, a form to rate and review, and recent reviews",
+            frame: "browser",
+          },
+          {
+            src: "/work/menupk/customer-mobile-home.jpg",
+            width: 828,
+            height: 1794,
+            alt: "Customer portal home on a phone",
+            frame: "phone",
+          },
+          {
+            src: "/work/menupk/customer-mobile-menu.jpg",
+            width: 828,
+            height: 1670,
+            alt: "A restaurant's menu on a phone, grouped into sections with prices and add buttons",
+            frame: "phone",
+          },
+          {
+            src: "/work/menupk/customer-mobile-search.jpg",
+            width: 828,
+            height: 1382,
+            alt: "Search results for pizza on a phone, as a grid of restaurant cards",
+            frame: "phone",
+          },
+        ],
+      },
+      {
+        title: "Restaurant portal",
+        summary:
+          "Where a restaurant sets itself up and runs its page: onboarding, profile, menu, gallery, reviews, customers and a QR code, with a dashboard on top.",
+        source: "design",
+        shots: [
+          {
+            src: "/work/menupk/restaurant-dashboard.png",
+            width: 2160,
+            height: 1350,
+            alt: "Restaurant dashboard: visit and rating figures, activity by hour, and customer feedback by sentiment",
+            frame: "browser",
+          },
+          {
+            src: "/work/menupk/onboarding-steps.png",
+            width: 2160,
+            height: 1350,
+            alt: "Digitalize your restaurant with 5 steps: confirm email, restaurant details, location, upload photos, upload menu",
+            frame: "browser",
+          },
+          {
+            src: "/work/menupk/menu-management.png",
+            width: 2160,
+            height: 1350,
+            alt: "Menu management: category tabs and menu item cards with availability toggles",
+            frame: "browser",
+          },
+        ],
+      },
+      {
+        title: "Online ordering",
+        summary:
+          "The back office behind delivery and takeaway: a live order board, order history, customers, coupons and delivery zones.",
+        source: "design",
+        shots: [
+          {
+            src: "/work/menupk/ordering-dashboard.jpg",
+            width: 2160,
+            height: 1350,
+            alt: "Online ordering dashboard: orders and sales today, customer visits against orders by hour, order completion, best sellers and a delivery heat map",
+            frame: "browser",
+          },
+          {
+            src: "/work/menupk/new-orders.png",
+            width: 2160,
+            height: 1350,
+            alt: "New orders board with columns for placed, accepted and in preparation; customer names and numbers replaced with placeholders",
+            frame: "browser",
+          },
+          {
+            src: "/work/menupk/delivery-zones.png",
+            width: 2160,
+            height: 1350,
+            alt: "Delivery zones for Karachi: two zones of named areas, each with minimum order, delivery charge and delivery time",
+            frame: "browser",
+          },
+        ],
+      },
+      {
+        title: "Design language",
+        summary:
+          "One palette for every surface — brand reds, secondary yellows, neutrals — carried into code as the MUI theme behind the shared component kit.",
+        source: "design",
+        shots: [
+          {
+            src: "/work/menupk/colour-system.png",
+            width: 2160,
+            height: 1350,
+            alt: "Colour system: brand red, secondary yellow and neutral scales from 50 to 900",
+            frame: "browser",
+          },
+        ],
+      },
+    ],
+  },
   {
     slug: "softex-chat",
     title: "Softex Chat",

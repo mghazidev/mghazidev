@@ -3,9 +3,12 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { projects } from "@/content/projects";
 
+const flagship = projects.find((p) => p.flagship);
+const rest = projects.filter((p) => !p.flagship);
+
 /**
- * Bento layout on a six-column grid: two featured projects across the top,
- * then the rest three to a row. Eight projects fill it exactly (2 + 3 + 3).
+ * Bento layout on a six-column grid: the flagship across the full width, two
+ * featured projects under it, then the rest three to a row (1 + 2 + 3 + 3).
  */
 export function Work() {
   return (
@@ -18,10 +21,17 @@ export function Work() {
             Shipped for real companies. <span className="text-aurora">Engineered like I own them.</span>
           </>
         }
-        lede="Apps I built at Softex, and products I designed and engineered on my own. Each opens into a case study: the problem, how it's built, and the calls I made."
+        lede="Products I built at DevsquarePK and Softex, and ones I designed and engineered on my own. Each opens into a case study: the problem, how it's built, and the calls I made."
       />
       <ul className="grid gap-5 lg:grid-cols-6">
-        {projects.map((project, index) => (
+        {flagship && (
+          <li className="lg:col-span-6">
+            <Reveal className="h-full">
+              <ProjectCard project={flagship} flagship />
+            </Reveal>
+          </li>
+        )}
+        {rest.map((project, index) => (
           <li key={project.slug} className={index < 2 ? "lg:col-span-3" : "lg:col-span-2"}>
             <Reveal delay={(index % 3) * 0.06} className="h-full">
               <ProjectCard project={project} featured={index < 2} />

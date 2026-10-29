@@ -49,6 +49,7 @@ const SOURCES: PrincipleSource[] = [
     title: "Boundaries before features",
     belief: "Clear seams between interface, data and domain are what let a product change late without breaking.",
     evidence: [
+      { project: "menupk", decision: "Feature modules for three products" },
       { project: "tiny-giggle", decision: "Modules, not screens" },
       { project: "buy-n-grab", decision: "Repositories between UI and API" },
       { project: "daily-cook", decision: "A modular monolith" },
