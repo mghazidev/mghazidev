@@ -43,7 +43,7 @@ export const experience: Role[] = [
     title: "MERN Stack & Mobile Developer",
     company: "Softex Solution",
     place: "United States · Remote",
-    period: "Apr 2026",
+    period: "Mar – Apr 2026",
     points: [
       "Full-time after my internship, working across Softex's web and mobile products.",
       "Web on the MERN stack (MongoDB, Express, React, Node.js); mobile in Flutter.",
