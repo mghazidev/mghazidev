@@ -9,7 +9,7 @@ export function Experience() {
       aria-labelledby="experience-title"
       className="mx-auto max-w-6xl scroll-mt-16 px-5 py-20 sm:px-8"
     >
-      <SectionHeading id="experience-title" eyebrow="Experience" title="Where I've built things." />
+      <SectionHeading id="experience-title" eyebrow="Experience" title="Where I've worked." />
       <ol className="relative space-y-6 border-l border-line pl-6 sm:pl-10">
         {experience.map((role, i) => (
           <li key={`${role.company}-${role.period}`} className="relative">

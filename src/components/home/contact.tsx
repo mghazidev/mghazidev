@@ -20,7 +20,7 @@ export function Contact() {
           id="contact-title"
           className="relative mx-auto mt-4 max-w-3xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-6xl"
         >
-          Have something worth building? <span className="text-aurora">Let&apos;s talk.</span>
+          Let&apos;s build <span className="text-aurora">something together.</span>
         </h2>
         <a
           href={`mailto:${profile.email}`}

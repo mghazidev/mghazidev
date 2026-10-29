@@ -15,13 +15,13 @@ export function Work() {
     <section id="work" aria-labelledby="work-title" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-20 sm:px-8">
       <SectionHeading
         id="work-title"
-        eyebrow="Selected work"
+        eyebrow="Projects"
         title={
           <>
-            Shipped for real companies. <span className="text-aurora">Engineered like I own them.</span>
+            Selected work. <span className="text-aurora">From company products to my own.</span>
           </>
         }
-        lede="Products I built at DevsquarePK and Softex, and ones I designed and engineered on my own. Each opens into a case study: the problem, how it's built, and the calls I made."
+        lede="Products I worked on at DevsquarePK and Softex, and apps I designed and built myself. Each one opens into the problem, how I built it, and the decisions behind it."
       />
       <ul className="grid gap-5 lg:grid-cols-6">
         {flagship && (

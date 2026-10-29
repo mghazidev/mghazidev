@@ -13,7 +13,7 @@ export function About() {
         <Reveal>
           <div className="relative mx-auto aspect-[4/5] w-56 overflow-hidden rounded-3xl border border-line md:w-full">
             <Image
-              src="/ghazi_image_2.jpg"
+              src="/about.jpg"
               alt={`Portrait of ${profile.name}`}
               fill
               sizes="(min-width: 768px) 288px, 224px"
@@ -25,27 +25,28 @@ export function About() {
         <Reveal delay={0.08}>
           <p className="eyebrow">About</p>
           <h2 id="about-title" className="mt-4 font-display text-4xl font-semibold tracking-tight text-balance">
-            Self-taught into frontend, then <span className="text-aurora">the whole stack.</span>
+            A little <span className="text-aurora">about me.</span>
           </h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted text-pretty">
             <p>
-              I started on the web with React and Next.js, moved into mobile with Flutter, and now build the
-              backends and local AI systems behind both.
+              I started out building websites with React and Next.js, then moved into mobile with Flutter. Today I
+              work across both, and on the backends behind them.
             </p>
             <p>
-              What I care about most is the part users never see: state that can&apos;t drift, numbers that
-              can&apos;t be invented, and failures that say what went wrong.
+              I enjoy the details users never notice but always feel: screens that stay in sync, numbers that are
+              always right, and errors that explain what happened. Since 2026 I&apos;ve been studying in Germany —
+              and learning German along the way.
             </p>
           </div>
           <dl className="mt-8 grid gap-4 border-t border-line pt-6 font-mono text-sm sm:grid-cols-2">
             <div>
-              <dt className="text-faint">studying</dt>
+              <dt className="text-faint">Studying</dt>
               <dd className="mt-1 text-fg">
                 {current.award} · {current.school}
               </dd>
             </div>
             <div>
-              <dt className="text-faint">community</dt>
+              <dt className="text-faint">Community</dt>
               <dd className="mt-1 text-fg">ACM-MAJU team, Jinnah League &apos;24</dd>
             </div>
           </dl>

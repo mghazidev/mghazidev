@@ -152,7 +152,7 @@ export const projects: Project[] = [
     metrics: [
       { value: "75", label: "routes" },
       { value: "3", label: "products" },
-      { value: "~800", label: "commits mine" },
+      { value: "800+", label: "commits by me" },
     ],
     cover: {
       src: "/work/menupk/site-hero.png",
@@ -813,7 +813,7 @@ export const projects: Project[] = [
     metrics: [
       { value: "2", label: "local models" },
       { value: "0", label: "cloud calls" },
-      { value: "1", label: "model call in flight" },
+      { value: "1", label: "model call at a time" },
     ],
     cover: {
       src: "/work/lecture-ai-companion/notes.png",
@@ -1121,7 +1121,7 @@ export const projects: Project[] = [
     ],
     architecture: {
       nodes: [
-        { id: "app", label: "Flutter", detail: "3 platforms" },
+        { id: "app", label: "Flutter", detail: "Riverpod" },
         { id: "api", label: "FastAPI", detail: "modular monolith" },
         { id: "db", label: "PostgreSQL", detail: "17" },
         { id: "auth", label: "Supabase", detail: "auth" },

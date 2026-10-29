@@ -9,8 +9,8 @@ export function Stack() {
       <SectionHeading
         id="stack-title"
         eyebrow="Stack"
-        title="The tools, by the layer they live in."
-        lede="Grouped the way the projects use them. Most of the work crosses at least two of these."
+        title="Tools I use every day."
+        lede="Grouped by where they sit in a product."
       />
       <Reveal>
         <dl className="glass overflow-hidden rounded-2xl font-mono text-sm">

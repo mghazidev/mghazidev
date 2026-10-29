@@ -49,7 +49,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         </Link>
 
         <p className="mt-10 font-mono text-xs uppercase tracking-[0.12em] text-[var(--accent)]">
-          case_study · {project.platform} · {project.year}
+          Case study · {project.platform} · {project.year}
         </p>
         <h1 className="mt-4 font-display text-[clamp(2.75rem,7vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-balance">
           {project.title}
@@ -128,7 +128,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[1.2fr_1fr]">
           <Reveal>
-            <BlueprintPanel label="system">
+            <BlueprintPanel label="Architecture">
               <Architecture project={project} />
               <dl className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line">
                 {project.metrics.map((m) => (

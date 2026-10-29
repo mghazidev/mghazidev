@@ -21,10 +21,10 @@ export function Education() {
         eyebrow="Education"
         title={
           <>
-            From Karachi to Regensburg. <span className="block text-aurora">Computer science, all the way.</span>
+            From Karachi <span className="text-aurora">to Regensburg.</span>
           </>
         }
-        lede="Software engineering in Pakistan, then computer science in Germany — with top-band results at every stage."
+        lede="I studied software engineering at MAJU in Karachi and now study computer science at OTH Regensburg."
       />
 
       <div className="grid gap-10 lg:grid-cols-[1fr_22rem]">

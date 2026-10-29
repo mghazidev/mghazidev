@@ -67,7 +67,7 @@ export function ProjectCard({
       </div>
 
       <div className={`relative flex flex-1 flex-col ${flagship ? "lg:py-2" : ""}`}>
-        {flagship && <p className="eyebrow mb-4">Flagship · company product</p>}
+        {flagship && <p className="eyebrow mb-4">Featured project</p>}
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--accent)]">
           <span>{project.platform}</span>
           <span aria-hidden className="text-faint">·</span>

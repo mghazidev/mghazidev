@@ -156,10 +156,10 @@ export const certificates: Certificate[] = [
   },
 ];
 
-/** CEFR levels, as listed on LinkedIn. */
+/** CEFR levels. */
 export const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export const languages: { name: string; level: (typeof LEVELS)[number]; note?: string }[] = [
   { name: "Urdu", level: "C2", note: "native" },
-  { name: "English", level: "B2" },
-  { name: "German", level: "A1", note: "learning" },
+  { name: "English", level: "C1" },
+  { name: "German", level: "A2", note: "learning" },
 ];

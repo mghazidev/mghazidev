@@ -15,13 +15,13 @@ export function Certificates() {
     >
       <SectionHeading
         id="certificates-title"
-        eyebrow="Credentials"
+        eyebrow="Certificates"
         title={
           <>
-            Recognition <span className="text-aurora">along the way.</span>
+            Certificates <span className="text-aurora">and references.</span>
           </>
         }
-        lede="Professional references, academic honours, community work and continued learning."
+        lede="A reference from DevsquarePK, my internship certificate, and academic awards, community work and courses."
       />
       <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {certificates.map((certificate, i) => (

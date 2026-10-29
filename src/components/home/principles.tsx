@@ -18,13 +18,13 @@ export function Principles() {
     >
       <SectionHeading
         id="approach-title"
-        eyebrow="How I engineer"
+        eyebrow="How I work"
         title={
           <>
-            Six rules I build by. <span className="block text-aurora">Each one applied in a real project.</span>
+            What I care about <span className="text-aurora">when I build.</span>
           </>
         }
-        lede="Not values on a poster. Under every rule are the decisions where it shaped the work; each opens the case study it came from."
+        lede="Six habits that show up in all my work, each with the projects where it made a difference."
       />
       <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {principles.map((principle, i) => (
