@@ -13,9 +13,10 @@ export function Experience() {
       <ol className="relative space-y-6 border-l border-line pl-6 sm:pl-10">
         {experience.map((role, i) => (
           <li key={`${role.company}-${role.period}`} className="relative">
+            {/* Centred on the 1px rule: list padding + 1px border + half the 12px dot − half the rule. */}
             <span
               aria-hidden
-              className="absolute -left-[1.85rem] top-6 size-3 rounded-full border-2 border-ink bg-violet shadow-[0_0_14px_var(--color-violet)] sm:-left-[2.85rem]"
+              className="absolute -left-[calc(1.5rem+6.5px)] top-6 size-3 rounded-full border-2 border-ink bg-violet shadow-[0_0_14px_var(--color-violet)] sm:-left-[calc(2.5rem+6.5px)]"
             />
             <Reveal delay={i * 0.05} className="glass rounded-2xl p-5 sm:p-6">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Architecture } from "@/components/architecture";
+import { PhoneTrio, phoneShots } from "@/components/case/phone-trio";
 import type { Project } from "@/content/projects";
 
 /**
@@ -40,7 +41,11 @@ export function ProjectCard({
       <div
         className={`relative mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-ink-2 ${flagship ? "lg:mb-0 lg:w-3/5 lg:shrink-0" : ""}`}
       >
-        {project.cover ? (
+        {project.cover?.frame === "phone" ? (
+          <div className="dot-grid absolute inset-0 px-4 pt-5 transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]">
+            <PhoneTrio shots={phoneShots(project)} compact />
+          </div>
+        ) : project.cover ? (
           <Image
             src={project.cover.src}
             alt={project.cover.alt}

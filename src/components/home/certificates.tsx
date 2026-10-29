@@ -1,16 +1,12 @@
-import { Maximize2, Quote } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { certificates, letter, type Certificate } from "@/content/credentials";
+import { certificates, type Certificate } from "@/content/credentials";
 
-/**
- * Certificates as their own images, each opening full size, with the
- * experience letter quoted alongside — six cards, two full rows of three.
- */
+/** Six documents, two full rows of three. Each links to the document itself. */
 export function Certificates() {
-  const [first, ...rest] = certificates;
   return (
     <section
       id="certificates"
@@ -19,35 +15,18 @@ export function Certificates() {
     >
       <SectionHeading
         id="certificates-title"
-        eyebrow="Certificates"
+        eyebrow="Credentials"
         title={
           <>
-            On paper, too. <span className="text-aurora">Each one opens full size.</span>
+            Recognition <span className="text-aurora">along the way.</span>
           </>
         }
-        lede="Work, academic, community and coursework — scanned from the originals."
+        lede="Professional references, academic honours, community work and continued learning."
       />
       <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <li>
-          <CertificateCard certificate={first} />
-        </li>
-        <li>
-          <Reveal delay={0.06} className="h-full">
-            <figure className="glass flex h-full flex-col justify-between rounded-2xl p-6">
-              <Quote aria-hidden className="size-6 text-violet" />
-              <blockquote className="mt-4 font-display text-xl leading-snug tracking-tight text-fg text-pretty">
-                &ldquo;{letter.quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 border-t border-line pt-4 font-mono text-xs text-faint">
-                <span className="block text-muted">Experience letter · {letter.from}</span>
-                {letter.date}
-              </figcaption>
-            </figure>
-          </Reveal>
-        </li>
-        {rest.map((certificate, i) => (
+        {certificates.map((certificate, i) => (
           <li key={certificate.title}>
-            <CertificateCard certificate={certificate} delay={((i + 2) % 3) * 0.06} />
+            <CertificateCard certificate={certificate} delay={(i % 3) * 0.06} />
           </li>
         ))}
       </ul>
@@ -55,31 +34,31 @@ export function Certificates() {
   );
 }
 
-function CertificateCard({ certificate, delay = 0 }: { certificate: Certificate; delay?: number }) {
+function CertificateCard({ certificate, delay }: { certificate: Certificate; delay: number }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <article className="glass group flex h-full flex-col overflow-hidden rounded-2xl">
-        <a
-          href={certificate.image.src}
-          target="_blank"
-          rel="noreferrer"
-          className="relative block aspect-[4/3] overflow-hidden border-b border-line bg-ink-2"
-        >
+      <article className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl transition-colors hover:border-line-strong">
+        <div className="relative aspect-[4/3] overflow-hidden border-b border-line bg-ink-2">
           <Image
             src={certificate.image.src}
             alt={certificate.image.alt}
             fill
             sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
-            className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
+            className={`object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.03] ${certificate.image.anchor === "top" ? "object-top" : ""}`}
           />
-          <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-ink/75 px-2.5 py-1 font-mono text-[11px] text-fg backdrop-blur">
-            <Maximize2 aria-hidden className="size-3" />
-            Full size<span className="sr-only">: {certificate.title} (opens in a new tab)</span>
-          </span>
-        </a>
+        </div>
         <div className="flex flex-1 flex-col p-5">
           <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-cyan">{certificate.kind}</p>
-          <h3 className="mt-2 font-display text-lg font-semibold leading-snug tracking-tight">{certificate.title}</h3>
+          <h3 className="mt-2 flex items-start justify-between gap-3 font-display text-lg font-semibold leading-snug tracking-tight">
+            {/* The whole card is the link; the overlay keeps the heading's name as its label. */}
+            <a href={certificate.image.src} target="_blank" rel="noreferrer" className="after:absolute after:inset-0">
+              {certificate.title}
+            </a>
+            <ArrowUpRight
+              aria-hidden
+              className="mt-1 size-4 shrink-0 text-faint transition-[transform,color] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg"
+            />
+          </h3>
           <p className="mt-1 text-sm text-violet">
             {certificate.issuer}
             {certificate.date && <span className="text-faint"> · {certificate.date}</span>}

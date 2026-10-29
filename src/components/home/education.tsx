@@ -24,24 +24,26 @@ export function Education() {
             From Karachi to Regensburg. <span className="block text-aurora">Computer science, all the way.</span>
           </>
         }
-        lede="Software engineering in Pakistan, then computer science in Germany. Results are taken from the transcripts and board certificates themselves."
+        lede="Software engineering in Pakistan, then computer science in Germany — with top-band results at every stage."
       />
 
       <div className="grid gap-10 lg:grid-cols-[1fr_22rem]">
-        <ol className="relative space-y-6 pl-8 sm:pl-12">
+        {/* One geometry at every width: the marker column is 1.5rem wide, and the
+            track and every marker are centred on it at 0.75rem. */}
+        <ol className="relative space-y-6 pl-10">
           {/* The track: bright where the path is now, fading toward the start. */}
           <span
             aria-hidden
-            className="absolute bottom-6 left-[0.6rem] top-6 w-px bg-linear-to-b from-mint via-cyan to-transparent sm:left-[1.1rem]"
+            className="absolute bottom-6 left-[calc(0.75rem-0.5px)] top-7 w-px bg-linear-to-b from-mint via-cyan to-transparent"
           />
           {education.map((stage, i) => (
             <li key={stage.award} className="relative">
               <span
                 aria-hidden
-                className="absolute -left-8 top-7 flex size-5 items-center justify-center sm:-left-12 sm:size-[1.4rem]"
+                className="absolute -left-10 top-6 flex size-6 items-center justify-center"
               >
                 {stage.current && (
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-mint/50 motion-reduce:animate-none" />
+                  <span className="absolute inline-flex size-4 animate-ping rounded-full bg-mint/50 motion-reduce:animate-none" />
                 )}
                 <span
                   className={`relative size-3 rounded-full border-2 border-ink ${stage.current ? "bg-mint shadow-[0_0_16px_var(--color-mint)]" : "bg-cyan shadow-[0_0_12px_var(--color-cyan)]"}`}

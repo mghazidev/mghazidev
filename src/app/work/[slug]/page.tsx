@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 
 import { Architecture } from "@/components/architecture";
 import { Frame } from "@/components/case/frame";
+import { PhoneTrio, phoneShots } from "@/components/case/phone-trio";
 import { Surfaces } from "@/components/case/surfaces";
+import { ProjectVideo } from "@/components/case/video";
 import { Reveal } from "@/components/reveal";
 import { getProject, nextProject, projects } from "@/content/projects";
 
@@ -33,6 +35,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   if (!project) notFound();
 
   const next = nextProject(project.slug);
+  const phonesOnly = project.gallery.length > 0 && project.gallery.every((shot) => shot.frame === "phone");
 
   return (
     <article style={{ "--accent": project.accent } as React.CSSProperties}>
@@ -81,8 +84,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
           {project.confidential && (
             <p className="inline-flex items-center gap-2 text-faint">
               <Lock aria-hidden className="size-3.5" />
-              Built at {project.context}. The code is private, and people&apos;s names and messages in any
-              screens are redacted.
+              Built at {project.context}. Source code is private.
             </p>
           )}
         </div>
@@ -95,7 +97,11 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
       {project.cover && (
         <section aria-label="Overview visual" className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
-            <Frame shot={project.cover} priority />
+            {project.cover.frame === "phone" ? (
+              <PhoneTrio shots={phoneShots(project)} priority />
+            ) : (
+              <Frame shot={project.cover} priority />
+            )}
           </Reveal>
         </section>
       )}
@@ -179,7 +185,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         </ol>
       </section>
 
-      {project.surfaces && <Surfaces surfaces={project.surfaces} />}
+      {project.surfaces && <Surfaces surfaces={project.surfaces} intro={project.surfacesIntro} />}
 
       {/* ── Gallery and video ──────────────────────────────────── */}
       {(project.gallery.length > 0 || project.video) && (
@@ -192,27 +198,19 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
 
           {project.video && (
             <Reveal className="mt-8">
-              <figure>
-                <video
-                  src={project.video.src}
-                  poster={project.video.poster}
-                  controls
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full rounded-xl border border-line-strong bg-ink-2"
-                />
-                <figcaption className="mt-3 font-mono text-xs text-faint">{project.video.caption}</figcaption>
-              </figure>
+              <ProjectVideo video={project.video} />
             </Reveal>
           )}
 
-          <ul className="mt-8 grid items-start gap-8 md:grid-cols-2">
+          {/* Phone screens sit four to a row; web screens two. */}
+          <ul
+            className={`mt-8 grid items-start gap-8 ${phonesOnly ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" : "md:grid-cols-2"}`}
+          >
             {project.gallery.map((shot, i) => (
               <li key={shot.src}>
-                <Reveal delay={(i % 2) * 0.06}>
+                <Reveal delay={(i % (phonesOnly ? 4 : 2)) * 0.06}>
                   <figure>
-                    <Frame shot={shot} sizes="(min-width: 768px) 520px, 100vw" />
+                    <Frame shot={shot} sizes={phonesOnly ? "(min-width: 1024px) 260px, 45vw" : "(min-width: 768px) 520px, 100vw"} />
                     {shot.caption && (
                       <figcaption className="mt-3 text-sm leading-relaxed text-muted">{shot.caption}</figcaption>
                     )}

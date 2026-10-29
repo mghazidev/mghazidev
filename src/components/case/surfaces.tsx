@@ -1,42 +1,26 @@
-import { CodeXml, PenTool } from "lucide-react";
-
 import { Frame } from "@/components/case/frame";
+import { ProjectVideo } from "@/components/case/video";
 import { Reveal } from "@/components/reveal";
 import type { Shot, Surface } from "@/content/projects";
 
-const SOURCE = {
-  live: { label: "Running code · captured locally", Icon: CodeXml },
-  design: { label: "From the product's Figma file", Icon: PenTool },
-} as const;
-
-/**
- * A multi-product project, one product at a time.
- *
- * Every surface says where its screens come from, so a design frame is never
- * mistaken for a screenshot of the running product.
- */
-export function Surfaces({ surfaces }: { surfaces: Surface[] }) {
+/** A multi-product project, one product at a time. */
+export function Surfaces({ surfaces, intro }: { surfaces: Surface[]; intro?: string }) {
   return (
     <section aria-labelledby="surfaces-title" className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
       <Reveal className="max-w-2xl">
         <h2 id="surfaces-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           Inside the product
         </h2>
-        <p className="mt-4 leading-relaxed text-muted text-pretty">
-          Each part of the platform in turn. Every section says whether its screens are running code or frames from
-          the product&apos;s Figma file; customer names and numbers in the designs are replaced with placeholders.
-        </p>
+        {intro && <p className="mt-4 leading-relaxed text-muted text-pretty">{intro}</p>}
       </Reveal>
 
-      {surfaces.map((surface) => {
-        const { label, Icon } = SOURCE[surface.source];
+      {surfaces.map((surface, n) => {
         const headingId = `surface-${surface.title.toLowerCase().replace(/\W+/g, "-")}`;
         return (
           <section key={surface.title} aria-labelledby={headingId} className="mt-14 border-t border-line pt-10">
             <Reveal className="max-w-2xl">
-              <p className="inline-flex items-center gap-2 font-mono text-xs text-[var(--accent)]">
-                <Icon aria-hidden className="size-3.5" />
-                {label}
+              <p aria-hidden className="font-mono text-xs text-[var(--accent)]">
+                {String(n + 1).padStart(2, "0")} / {String(surfaces.length).padStart(2, "0")}
               </p>
               <h3 id={headingId} className="mt-3 font-display text-2xl font-semibold tracking-tight">
                 {surface.title}
@@ -45,18 +29,7 @@ export function Surfaces({ surfaces }: { surfaces: Surface[] }) {
             </Reveal>
             {surface.video && (
               <Reveal className="mt-8">
-                <figure>
-                  <video
-                    src={surface.video.src}
-                    poster={surface.video.poster}
-                    controls
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className="w-full rounded-xl border border-line-strong bg-ink-2"
-                  />
-                  <figcaption className="mt-3 font-mono text-xs text-faint">{surface.video.caption}</figcaption>
-                </figure>
+                <ProjectVideo video={surface.video} />
               </Reveal>
             )}
             <List ordered={surface.flow} className="mt-8 grid items-start gap-6 lg:grid-cols-6">

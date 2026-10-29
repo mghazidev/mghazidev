@@ -31,19 +31,14 @@ export type Shot = {
   step?: string;
 };
 
-/**
- * One product inside a larger project — MenuPK is three of them plus a
- * marketing site. `source` says what the screens are: running code captured
- * locally, or frames from the product's Figma file. Readers are told which.
- */
+/** One product inside a larger project — MenuPK is three of them plus a marketing site. */
 export type Surface = {
   title: string;
   summary: string;
-  source: "live" | "design";
   /** Shots are consecutive steps of one journey, numbered in order. */
   flow?: boolean;
   shots: Shot[];
-  video?: { src: string; poster: string; caption: string };
+  video?: { src: string; poster: string; caption: string; portrait?: boolean };
 };
 
 export type Project = {
@@ -69,13 +64,16 @@ export type Project = {
   cover?: Shot;
   gallery: Shot[];
   /** `poster` is shown before playback — the first frame is often an empty state. */
-  video?: { src: string; poster: string; caption: string };
+  /** `portrait` for phone recordings, which play in a device frame. */
+  video?: { src: string; poster: string; caption: string; portrait?: boolean };
   repo?: string;
-  /** Company work: screens are redacted and the code is not public. */
+  /** Company work: the code is not public. */
   confidential?: boolean;
   /** Shown full width at the top of the work grid. At most one project. */
   flagship?: boolean;
   surfaces?: Surface[];
+  /** One line above the surfaces, where the project needs it. */
+  surfacesIntro?: string;
 };
 
 export const projects: Project[] = [
@@ -166,17 +164,17 @@ export const projects: Project[] = [
     gallery: [],
     confidential: true,
     flagship: true,
+    surfacesIntro:
+      "The platform one product at a time — from the site that brings restaurants in, through the diner's order, to the back office that runs it.",
     surfaces: [
       {
         title: "Marketing site",
         summary:
           "Mine alone: I took the site's Webflow design into Next.js and built its GSAP scroll sequences. It sells the product and sends restaurants into onboarding.",
-        source: "live",
         video: {
           src: "/work/menupk/site-journey.webm",
           poster: "/work/menupk/site-digitize.png",
-          caption:
-            "The whole page, run locally from its repository with analytics blocked. One mock-up showing a person's contact details is blurred.",
+          caption: "The full marketing site, top to bottom — scroll-driven sections built with GSAP.",
         },
         shots: [
           {
@@ -201,7 +199,6 @@ export const projects: Project[] = [
         title: "Customer portal",
         summary:
           "Where diners find a restaurant, read its menu and order. Desktop and mobile were designed together; I built the restaurant pages, checkout and order tracking.",
-        source: "design",
         shots: [
           {
             src: "/work/menupk/customer-home.jpg",
@@ -244,7 +241,6 @@ export const projects: Project[] = [
         title: "Ordering flow",
         summary:
           "One order from menu to doorstep. I built this journey in code — the menu page, the item and deal pop-ups, the cart, checkout and the tracking page.",
-        source: "design",
         flow: true,
         shots: [
           {
@@ -316,7 +312,6 @@ export const projects: Project[] = [
         title: "Restaurant portal",
         summary:
           "Where a restaurant sets itself up and runs its page: onboarding, profile, menu, gallery, reviews, customers and a QR code, with a dashboard on top.",
-        source: "design",
         shots: [
           {
             src: "/work/menupk/restaurant-dashboard.png",
@@ -345,7 +340,6 @@ export const projects: Project[] = [
         title: "Online ordering",
         summary:
           "The back office behind delivery and takeaway: a live order board, order history, customers, coupons and delivery zones.",
-        source: "design",
         shots: [
           {
             src: "/work/menupk/ordering-dashboard.jpg",
@@ -358,7 +352,7 @@ export const projects: Project[] = [
             src: "/work/menupk/new-orders.png",
             width: 2160,
             height: 1350,
-            alt: "New orders board with columns for placed, accepted and in preparation; customer names and numbers replaced with placeholders",
+            alt: "New orders board with columns for placed, accepted and in preparation",
             frame: "browser",
           },
           {
@@ -374,7 +368,6 @@ export const projects: Project[] = [
         title: "Design language",
         summary:
           "One palette for every surface — brand reds, secondary yellows, neutrals — carried into code as the MUI theme behind the shared component kit.",
-        source: "design",
         shots: [
           {
             src: "/work/menupk/colour-system.png",
@@ -444,7 +437,47 @@ export const projects: Project[] = [
       { value: "92", label: "Dart files" },
       { value: "2", label: "transports" },
     ],
-    gallery: [],
+    cover: {
+      src: "/work/softex-chat/messages.jpg",
+      width: 780,
+      height: 1688,
+      alt: "Messages: a search bar, online teammates, filters for unread, favourites and groups, and recent conversations",
+      frame: "phone",
+    },
+    gallery: [
+      {
+        src: "/work/softex-chat/login.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Softex sign-in on a dark glass card, with Google and Microsoft options",
+        frame: "phone",
+        caption: "Sign in with email, Google or Microsoft.",
+      },
+      {
+        src: "/work/softex-chat/conversation.jpg",
+        width: 780,
+        height: 1688,
+        alt: "A conversation with a quoted reply, a shared PDF with a reaction, read receipts and a typing indicator",
+        frame: "phone",
+        caption: "Replies, files, reactions and read receipts \u2014 live over the socket.",
+      },
+      {
+        src: "/work/softex-chat/group-info.jpg",
+        width: 780,
+        height: 1688,
+        alt: "Group info with members, an admin badge, and permission switches for messaging, editing, approvals and media",
+        frame: "phone",
+        caption: "Group admins decide who can post, edit and join.",
+      },
+      {
+        src: "/work/softex-chat/forward.jpg",
+        width: 780,
+        height: 1688,
+        alt: "Forwarding a file to two selected chats from a searchable list",
+        frame: "phone",
+        caption: "Forward anything to several chats at once.",
+      },
+    ],
     confidential: true,
   },
   {
@@ -525,7 +558,7 @@ export const projects: Project[] = [
         height: 310,
         alt: "The assistant's answer with two tool calls, Read spending by category and Read your commitments, shown above it",
         frame: "none",
-        caption: "From a live run against a local model: the assistant asks the engine for the figure instead of producing one.",
+        caption: "The assistant asks the engine for the figure instead of producing one — and shows which tools it used.",
       },
       {
         src: "/work/finance-intelligence/uncertain-transaction.png",
@@ -563,7 +596,7 @@ export const projects: Project[] = [
     video: {
       src: "/work/finance-intelligence/journey.webm",
       poster: "/work/finance-intelligence/upload.png",
-      caption: "Upload, review, dashboard and commitments in one real take — the deterministic engine, no model in the loop.",
+      caption: "Upload, review, dashboard and commitments — one statement import, start to finish.",
     },
     repo: "https://github.com/mghazidev/finance-intelligence",
   },
@@ -625,7 +658,79 @@ export const projects: Project[] = [
       { value: "277", label: "Dart files" },
       { value: "50+", label: "commits" },
     ],
-    gallery: [],
+    cover: {
+      src: "/work/tiny-giggle/home.jpg",
+      width: 720,
+      height: 1526,
+      alt: "Tiny Giggle home: the baby's profile, today's readings, a featured hire-care card and tiles for album, growth, vaccination and milestones",
+      frame: "phone",
+    },
+    gallery: [
+      {
+        src: "/work/tiny-giggle/onboarding.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Onboarding: track, predict and improve baby's sleep",
+        frame: "phone",
+      },
+      {
+        src: "/work/tiny-giggle/memories.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Onboarding: save your baby's memories and moments",
+        frame: "phone",
+      },
+      {
+        src: "/work/tiny-giggle/welcome.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Welcome screen with log in and sign up",
+        frame: "phone",
+      },
+      {
+        src: "/work/tiny-giggle/milestones.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Growth summary, recent activities, milestone progress and vaccinations",
+        frame: "phone",
+        caption: "Milestones and vaccinations, tracked over time.",
+      },
+      {
+        src: "/work/tiny-giggle/sleep.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Sleep tracker with naps, nights and wake-ups, and a sleep history",
+        frame: "phone",
+      },
+      {
+        src: "/work/tiny-giggle/temperature.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Temperature log with the latest reading and all records",
+        frame: "phone",
+      },
+      {
+        src: "/work/tiny-giggle/growth.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Growth tracker with height and weight, trends and a weight curve",
+        frame: "phone",
+        caption: "Measurements become charts.",
+      },
+      {
+        src: "/work/tiny-giggle/music.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Music: a featured lullaby, categories and top picks for baby",
+        frame: "phone",
+      },
+    ],
+    video: {
+      src: "/work/tiny-giggle/journey.webm",
+      poster: "/work/tiny-giggle/home.jpg",
+      caption: "Onboarding, the home dashboard, and the sleep, feeding, music and growth trackers.",
+      portrait: true,
+    },
   },
   {
     slug: "lecture-ai-companion",
@@ -748,7 +853,7 @@ export const projects: Project[] = [
       src: "/work/lecture-ai-companion/journey.webm",
       poster: "/work/lecture-ai-companion/recording.png",
       caption:
-        "Upload, record, notes — real transcription and a real local model. The deck and the voice are synthetic, so no course material is shown.",
+        "Upload a deck, record the lecture, and the notes write themselves — transcription and generation all on-device.",
     },
     repo: "https://github.com/mghazidev/lecture-ai-companion",
   },
@@ -804,7 +909,66 @@ export const projects: Project[] = [
       { value: "153", label: "Dart files" },
       { value: "3", label: "sign-in methods" },
     ],
-    gallery: [],
+    cover: {
+      src: "/work/buy-n-grab/home.jpg",
+      width: 720,
+      height: 1526,
+      alt: "Buy n Grab home: a search bar and category tiles \u2014 animals, beauty, education, electronics, exchange and more",
+      frame: "phone",
+    },
+    gallery: [
+      {
+        src: "/work/buy-n-grab/splash.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Splash screen: Your Marketplace Buy and Sell, with a Get Started button",
+        frame: "phone",
+      },
+      {
+        src: "/work/buy-n-grab/register.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Registration form with name, email, number, password and profile picture",
+        frame: "phone",
+        caption: "Create an account, or continue with Google.",
+      },
+      {
+        src: "/work/buy-n-grab/sign-in.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Sign-in with email, password, remember me and Google",
+        frame: "phone",
+      },
+      {
+        src: "/work/buy-n-grab/categories.jpg",
+        width: 720,
+        height: 1526,
+        alt: "The Animals category opened into sub-categories, from equipment to services and pets",
+        frame: "phone",
+        caption: "Categories open into focused sub-categories.",
+      },
+      {
+        src: "/work/buy-n-grab/advert.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Create Advertisement: banner upload, business details, placement and format",
+        frame: "phone",
+        caption: "Sellers build and place their own adverts.",
+      },
+      {
+        src: "/work/buy-n-grab/settings.jpg",
+        width: 720,
+        height: 1526,
+        alt: "Settings with profile, advertisements, terms and contact",
+        frame: "phone",
+      },
+    ],
+    video: {
+      src: "/work/buy-n-grab/journey.webm",
+      poster: "/work/buy-n-grab/splash.jpg",
+      caption: "Onboarding, sign-in and browsing categories.",
+      portrait: true,
+    },
     confidential: true,
   },
   {
@@ -818,7 +982,7 @@ export const projects: Project[] = [
     statusLabel: "Production-ready",
     year: "2026",
     context: "Softex Solution",
-    role: "Flutter developer — screens, state and the glass UI system",
+    role: "Flutter developer — glass UI redesign, refactors and API integration",
     accent: "#34d399",
     problem:
       "Leave requests, standups and project tracking lived in different tools, so nobody had one view of the team.",
@@ -837,7 +1001,8 @@ export const projects: Project[] = [
       edges: [{ from: "app", to: "api", via: "https" }],
     },
     features: [
-      { title: "Leave workflow", detail: "Apply, then track it through pending, accepted or rejected." },
+      { title: "Leave workflow", detail: "Apply, then track it through pending, accepted or rejected; managers decide from one queue." },
+      { title: "Attendance", detail: "Check in and out, an attendance overview, and per-employee detail." },
       { title: "People and projects", detail: "Employee directory, adding employees, and project lists." },
       { title: "Meetings and standups", detail: "Create meetings and keep a standup history." },
       { title: "Reports with charts", detail: "Team and personal reports, plus a visualisation view." },
@@ -847,13 +1012,88 @@ export const projects: Project[] = [
         title: "Errors as part of the design",
         detail: "Failures surface in glass dialogs and bottom sheets that match the rest of the interface, rather than raw toasts.",
       },
+      {
+        title: "One employee model",
+        detail: "Three duplicate employee models were merged into one shared model, and every controller and repository moved onto it.",
+      },
+      {
+        title: "Components, not copies",
+        detail: "Buttons, text fields, the top bar and the tab bar became shared components, so each screen I refactored got lighter and more consistent.",
+      },
     ],
     metrics: [
       { value: "18", label: "screens" },
       { value: "144", label: "Dart files" },
       { value: "3", label: "leave states" },
     ],
+    cover: {
+      src: "/work/softex-hrm/dashboard.jpg",
+      width: 780,
+      height: 1688,
+      alt: "Employee dashboard: today's check-in, leave balance, standups, projects and quick actions on a dark glass interface",
+      frame: "phone",
+    },
     gallery: [],
+    surfaces: [
+      {
+        title: "An employee's day",
+        summary: "Check in, see what is left of the leave balance, and file the daily standup — each a tap from the dashboard.",
+        shots: [
+          {
+            src: "/work/softex-hrm/dashboard.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Employee dashboard with check-in status, stats and quick actions",
+            frame: "phone",
+          },
+          {
+            src: "/work/softex-hrm/standup.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Create Standup Report: project, yesterday, today, blockers and notes",
+            frame: "phone",
+          },
+        ],
+      },
+      {
+        title: "Leave, request to decision",
+        summary: "An employee applies; the manager sees it in the queue and decides; the employee sees the result.",
+        flow: true,
+        shots: [
+          {
+            src: "/work/softex-hrm/apply-leave.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Apply Leave: leave type, dates, duration and reason",
+            frame: "phone",
+            step: "Apply",
+            caption: "Type, dates and a reason \u2014 the balance is shown up front.",
+          },
+          {
+            src: "/work/softex-hrm/leave-review.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Leave Management: totals, a pending queue and approve or reject on each request",
+            frame: "phone",
+            step: "Review and decide",
+            caption: "Pending, accepted and rejected, with one-tap decisions.",
+          },
+        ],
+      },
+      {
+        title: "Reporting",
+        summary: "Standups roll up into charts: submission trend, participation by department, projects and blockers.",
+        shots: [
+          {
+            src: "/work/softex-hrm/reports.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Report Visualizations: submission trend chart, totals and department participation bars",
+            frame: "phone",
+          },
+        ],
+      },
+    ],
     confidential: true,
   },
   {
@@ -861,7 +1101,7 @@ export const projects: Project[] = [
     title: "Daily Cook",
     tagline: "A budget-first weekly meal planner.",
     summary:
-      "Plan a week of meals within a budget, for a whole household. A Flutter app on a FastAPI and PostgreSQL backend — in active development.",
+      "Set a weekly budget and get a week of meals that fits it — then swap, shop and cook from the same plan. A Flutter app on a FastAPI and PostgreSQL backend, running on Android.",
     platform: "mobile",
     status: "in-progress",
     statusLabel: "In progress",
@@ -872,9 +1112,9 @@ export const projects: Project[] = [
     problem:
       "Meal planners start from recipes and leave the cost as a surprise. Daily Cook starts from the budget.",
     built:
-      "A FastAPI modular monolith split into catalogue, households and planning, with PostgreSQL, Supabase Auth, and a Flutter client for Android, iOS and web.",
+      "A FastAPI modular monolith — catalogue, households and planning — with a pricing and planner engine, PostgreSQL and Supabase Auth. The Flutter client has its own design system and covers onboarding, the weekly plan, swaps, the shopping list, recipes and a cook mode.",
     stack: [
-      { layer: "Client", items: ["Flutter (Android · iOS · web)"] },
+      { layer: "Client", items: ["Flutter", "Riverpod", "go_router", "dio"] },
       { layer: "Backend", items: ["FastAPI", "PostgreSQL 17", "Alembic"] },
       { layer: "Auth", items: ["Supabase Auth"] },
       { layer: "Quality", items: ["ruff", "mypy", "pytest", "e2e smoke"] },
@@ -893,9 +1133,12 @@ export const projects: Project[] = [
       ],
     },
     features: [
-      { title: "Budget-first planning", detail: "The week is planned to fit a budget, not the other way round." },
+      { title: "Budget-first planning", detail: "The week is planned to fit a budget, priced as the packs you'd actually buy." },
+      { title: "Onboarding that shapes the plan", detail: "Market and store, kitchen equipment, cooking time, household size, meals, diet, allergies, dislikes and pantry." },
+      { title: "Swaps that show the cost", detail: "Every alternative says whether it keeps the week within budget." },
+      { title: "A shopping list in real packs", detail: "Grouped by aisle, with what's already in the pantry subtracted." },
+      { title: "Cook mode", detail: "One step at a time, with built-in timers." },
       { title: "Households", detail: "Plans belong to a household rather than one person." },
-      { title: "Catalogue", detail: "Ingredients with sample prices. Prices are placeholder estimates for now." },
     ],
     decisions: [
       {
@@ -908,11 +1151,80 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      { value: "3", label: "platforms" },
       { value: "3", label: "backend modules" },
-      { value: "MVP", label: "stage" },
+      { value: "92", label: "backend tests" },
+      { value: "10", label: "onboarding steps" },
     ],
+    cover: {
+      src: "/work/daily-cook/week.jpg",
+      width: 780,
+      height: 1688,
+      alt: "Your week: the estimated basket against the budget, day tabs and the day's meals with swap buttons",
+      frame: "phone",
+    },
     gallery: [],
+    surfaces: [
+      {
+        title: "From budget to dinner",
+        summary: "The whole loop: set a budget, get a week that fits it, swap what you don't fancy, shop the list, and cook step by step.",
+        flow: true,
+        shots: [
+          {
+            src: "/work/daily-cook/welcome.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Welcome: A week of good food, planned around your budget",
+            frame: "phone",
+            step: "Start",
+          },
+          {
+            src: "/work/daily-cook/onboarding-budget.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Onboarding step 9 of 10: set a weekly grocery budget",
+            frame: "phone",
+            step: "Set the budget",
+            caption: "Market, store, kitchen, time, household, diet, allergies and budget.",
+          },
+          {
+            src: "/work/daily-cook/week.jpg",
+            width: 780,
+            height: 1688,
+            alt: "The planned week with the basket under budget",
+            frame: "phone",
+            step: "Get a week",
+            caption: "The basket is measured against the budget, live.",
+          },
+          {
+            src: "/work/daily-cook/swap.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Swap dinner: alternatives marked within or over budget, with the new week total",
+            frame: "phone",
+            step: "Swap a meal",
+            caption: "Every alternative says what it does to the total.",
+          },
+          {
+            src: "/work/daily-cook/shopping.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Shopping list by aisle, in real pack sizes, with pantry items subtracted",
+            frame: "phone",
+            step: "Shop the list",
+            caption: "Packs you'd actually buy, minus what's already in the pantry.",
+          },
+          {
+            src: "/work/daily-cook/cook-mode.jpg",
+            width: 780,
+            height: 1688,
+            alt: "Cook mode: one step at a time with a built-in timer",
+            frame: "phone",
+            step: "Cook",
+            caption: "One step at a time, with timers.",
+          },
+        ],
+      },
+    ],
   },
   {
     slug: "zyturf",

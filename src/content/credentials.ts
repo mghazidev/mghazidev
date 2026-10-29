@@ -71,10 +71,26 @@ export type Certificate = {
   date?: string;
   detail: string;
   kind: "Work" | "Academic" | "Community" | "Course";
-  image: { src: string; width: number; height: number; alt: string };
+  /** `top` anchors a portrait document (a letter) to its letterhead in the card. */
+  image: { src: string; width: number; height: number; alt: string; anchor?: "top" };
 };
 
 export const certificates: Certificate[] = [
+  {
+    title: "Experience letter — Junior Frontend Engineer",
+    issuer: "DevsquarePK",
+    date: "21 Apr 2025",
+    detail:
+      "“His most notable achievement so far has been leading the frontend development of our Restaurant Management System Suite.”",
+    kind: "Work",
+    image: {
+      src: "/credentials/devsquarepk-experience-letter.jpg",
+      width: 1600,
+      height: 2071,
+      alt: "DevsquarePK experience letter dated 21 April 2025, certifying Muhammad Ghazi as a Junior Frontend Engineer since 1 November 2023 who led frontend development of the company's restaurant management suite",
+      anchor: "top",
+    },
+  },
   {
     title: "Flutter Developer Intern",
     issuer: "Softex Solution",
@@ -139,14 +155,6 @@ export const certificates: Certificate[] = [
     },
   },
 ];
-
-/** The experience letter, quoted rather than shown: it carries a signature. */
-export const letter = {
-  from: "DevsquarePK",
-  date: "21 Apr 2025",
-  quote:
-    "His most notable achievement so far has been leading the frontend development of our Restaurant Management System Suite.",
-};
 
 /** CEFR levels, as listed on LinkedIn. */
 export const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
