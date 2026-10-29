@@ -79,12 +79,6 @@ export const experience: Role[] = [
   },
 ];
 
-export const education = {
-  degree: "BS Software Engineering",
-  school: "Mohammad Ali Jinnah University",
-  note: "Leading the tech hackathon at MAJU.",
-};
-
 /** Grouped by layer, because that is how the projects use them. */
 export const stack = [
   { layer: "Mobile", items: ["Flutter", "Dart", "GetX", "Riverpod", "Socket.IO", "Pusher"] },

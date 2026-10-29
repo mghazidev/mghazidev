@@ -1,5 +1,7 @@
 import { About } from "@/components/home/about";
+import { Certificates } from "@/components/home/certificates";
 import { Contact } from "@/components/home/contact";
+import { Education } from "@/components/home/education";
 import { Experience } from "@/components/home/experience";
 import { Hero } from "@/components/home/hero";
 import { Principles } from "@/components/home/principles";
@@ -14,6 +16,8 @@ export default function HomePage() {
       <Principles />
       <Stack />
       <Experience />
+      <Education />
+      <Certificates />
       <About />
       <Contact />
     </>

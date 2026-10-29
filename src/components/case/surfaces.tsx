@@ -59,10 +59,18 @@ export function Surfaces({ surfaces }: { surfaces: Surface[] }) {
                 </figure>
               </Reveal>
             )}
-            <ul className="mt-8 grid items-start gap-6 lg:grid-cols-6">
+            <List ordered={surface.flow} className="mt-8 grid items-start gap-6 lg:grid-cols-6">
               {surface.shots.map((shot, i) => (
-                <li key={shot.src} className={span(shot, i, surface.shots)}>
+                <li key={shot.src} className={surface.flow ? flowSpan(shot, i, surface.shots) : span(shot, i, surface.shots)}>
                   <Reveal delay={(i % 3) * 0.05}>
+                    {surface.flow && shot.step && (
+                      <p className="mb-3 flex items-baseline gap-3">
+                        <span aria-hidden className="font-mono text-xs text-[var(--accent)]">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-medium text-fg">{shot.step}</span>
+                      </p>
+                    )}
                     <figure>
                       <Frame shot={shot} sizes={shot.frame === "phone" ? "288px" : "(min-width: 1024px) 560px, 100vw"} />
                       {shot.caption && (
@@ -72,7 +80,7 @@ export function Surfaces({ surfaces }: { surfaces: Surface[] }) {
                   </Reveal>
                 </li>
               ))}
-            </ul>
+            </List>
           </section>
         );
       })}
@@ -89,7 +97,21 @@ export function Surfaces({ surfaces }: { surfaces: Surface[] }) {
 function span(shot: Shot, index: number, shots: Shot[]): string {
   if (shot.frame === "phone") return "lg:col-span-2";
   const screens = shots.filter((s) => s.frame !== "phone");
-  const phones = shots.length - screens.length;
   if (screens.length === 1) return "lg:col-span-4";
   return screens.length % 2 === 1 && index === 0 ? "lg:col-span-6" : "lg:col-span-3";
+}
+
+/** A journey is an ordered list, so screen readers announce the step numbers. */
+function List({ ordered, className, children }: { ordered?: boolean; className: string; children: React.ReactNode }) {
+  return ordered ? <ol className={className}>{children}</ol> : <ul className={className}>{children}</ul>;
+}
+
+/**
+ * Steps of a flow: a pop-up takes a third of the row and a full screen the
+ * other two thirds, so steps pair up across the page; the final screen closes
+ * the journey full width.
+ */
+function flowSpan(shot: Shot, index: number, shots: Shot[]): string {
+  if (shot.frame !== "browser") return "lg:col-span-2";
+  return index === shots.length - 1 ? "lg:col-span-6" : "lg:col-span-4";
 }

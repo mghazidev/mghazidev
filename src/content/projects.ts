@@ -27,6 +27,8 @@ export type Shot = {
   /** Phone screens are framed as a device; web screens as a browser window. */
   frame: "phone" | "browser" | "none";
   caption?: string;
+  /** In a flow surface, the step this screen shows. */
+  step?: string;
 };
 
 /**
@@ -38,6 +40,8 @@ export type Surface = {
   title: string;
   summary: string;
   source: "live" | "design";
+  /** Shots are consecutive steps of one journey, numbered in order. */
+  flow?: boolean;
   shots: Shot[];
   video?: { src: string; poster: string; caption: string };
 };
@@ -118,7 +122,7 @@ export const projects: Project[] = [
     features: [
       { title: "Search and discovery", detail: "Diners search by dish, cuisine or restaurant, filter by cuisine and dining style, and sort by relevance, rating or distance." },
       { title: "A page for every restaurant", detail: "Menu, about, reviews, gallery and feedback, each restaurant on its own route." },
-      { title: "Checkout and order tracking", detail: "Orders go from the restaurant's menu through checkout to a page that follows that order." },
+      { title: "Cart, checkout and tracking", detail: "Dishes and deals are customised in pop-ups, collected in a cart, checked out with a map-pinned address, then followed on a live timeline." },
       { title: "Five-step onboarding", detail: "Register, restaurant details, location on a map, menu upload and photos — a restaurant is live at the end of it." },
       { title: "Menu management", detail: "Items, categories, deals and add-ons, with a CSV upload for menus that already exist in a spreadsheet." },
       { title: "A QR code for every table", detail: "Each restaurant gets a QR code to its menu, printable straight from the dashboard." },
@@ -135,6 +139,11 @@ export const projects: Project[] = [
         title: "One component kit, three products",
         detail:
           "menu-ui: about twenty shared components (buttons, cards, drawer, modal, navbar, map, skeletons) and 132 icon components on one MUI theme, so the diner's portal and the restaurant's back office read as the same product.",
+      },
+      {
+        title: "Tracking that keeps itself current",
+        detail:
+          "The order page asks for the order's status every ten seconds and maps it onto a five-step timeline — placed, accepted, preparing, out for delivery, delivered — so a diner never has to refresh to see progress.",
       },
       {
         title: "An order you can hear",
@@ -228,6 +237,78 @@ export const projects: Project[] = [
             height: 1382,
             alt: "Search results for pizza on a phone, as a grid of restaurant cards",
             frame: "phone",
+          },
+        ],
+      },
+      {
+        title: "Ordering flow",
+        summary:
+          "One order from menu to doorstep. I built this journey in code — the menu page, the item and deal pop-ups, the cart, checkout and the tracking page.",
+        source: "design",
+        flow: true,
+        shots: [
+          {
+            src: "/work/menupk/flow-menu.png",
+            width: 2160,
+            height: 1350,
+            alt: "A restaurant's menu: category tabs, a menu search, and a row of deal cards with prices and Add to cart buttons, two already in the cart",
+            frame: "browser",
+            step: "Browse the menu",
+            caption: "Category tabs and search; anything already in the cart shows its quantity in place.",
+          },
+          {
+            src: "/work/menupk/flow-item.png",
+            width: 1270,
+            height: 1738,
+            alt: "Supreme Nachos pop-up: choose a variant, add sauces, write special instructions, set the quantity, Add to Cart for Rs.2500",
+            frame: "none",
+            step: "Customise a dish",
+            caption: "Variant, add-ons, instructions and quantity — the price updates on the button.",
+          },
+          {
+            src: "/work/menupk/flow-deal.png",
+            width: 1270,
+            height: 1280,
+            alt: "Family Pizza Deal pop-up: choose up to two small pizza flavours with a quantity for each",
+            frame: "none",
+            step: "Build a deal",
+            caption: "Deals set their own limits — here, two flavours of small pizza.",
+          },
+          {
+            src: "/work/menupk/flow-cart-drawer.png",
+            width: 2160,
+            height: 1350,
+            alt: "The menu with the cart open beside it, listing items with quantities, sub total, delivery, tax and a Place Order button",
+            frame: "browser",
+            step: "Open the cart",
+            caption: "The cart opens over the menu, so adding one more thing is a click away.",
+          },
+          {
+            src: "/work/menupk/flow-cart.png",
+            width: 800,
+            height: 1180,
+            alt: "Cart summary: Supreme Pizza and Supreme Nachos with quantities, an instruction, sub total, delivery and grand total",
+            frame: "none",
+            step: "Review the order",
+            caption: "Edit quantities, remove items, and see delivery in the total before paying.",
+          },
+          {
+            src: "/work/menupk/flow-checkout.png",
+            width: 2160,
+            height: 1350,
+            alt: "Checkout: personal information, delivery address with a pin on a map, payment method, and the cart summary",
+            frame: "browser",
+            step: "Check out",
+            caption: "Address with a map pin, payment method, and a promo code beside the summary.",
+          },
+          {
+            src: "/work/menupk/flow-tracking.png",
+            width: 2160,
+            height: 1350,
+            alt: "Order tracking: a timeline from order placed through accepted, preparing and out for delivery to delivered, above the order details",
+            frame: "browser",
+            step: "Track the order",
+            caption: "Placed, accepted, preparing, out for delivery, delivered — the page checks for news every ten seconds.",
           },
         ],
       },

@@ -1,7 +1,10 @@
 import Image from "next/image";
 
 import { Reveal } from "@/components/reveal";
-import { education, profile } from "@/content/profile";
+import { education } from "@/content/credentials";
+import { profile } from "@/content/profile";
+
+const current = education.find((stage) => stage.current) ?? education[0];
 
 export function About() {
   return (
@@ -36,14 +39,14 @@ export function About() {
           </div>
           <dl className="mt-8 grid gap-4 border-t border-line pt-6 font-mono text-sm sm:grid-cols-2">
             <div>
-              <dt className="text-faint">education</dt>
+              <dt className="text-faint">studying</dt>
               <dd className="mt-1 text-fg">
-                {education.degree} · {education.school}
+                {current.award} · {current.school}
               </dd>
             </div>
             <div>
               <dt className="text-faint">community</dt>
-              <dd className="mt-1 text-fg">{education.note}</dd>
+              <dd className="mt-1 text-fg">ACM-MAJU team, Jinnah League &apos;24</dd>
             </div>
           </dl>
         </Reveal>
