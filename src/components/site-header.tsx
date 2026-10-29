@@ -4,6 +4,7 @@ import { profile } from "@/content/profile";
 
 const NAV = [
   { href: "/#work", label: "Work" },
+  { href: "/#approach", label: "Approach" },
   { href: "/#stack", label: "Stack", wideOnly: true },
   { href: "/#experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },

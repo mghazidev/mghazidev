@@ -15,11 +15,10 @@ export function Work() {
         eyebrow="Selected work"
         title={
           <>
-            Five mobile apps, three web products —{" "}
-            <span className="text-aurora">designed and built end to end.</span>
+            Shipped for real companies. <span className="text-aurora">Engineered like I own them.</span>
           </>
         }
-        lede="Each one opens into a case study: the problem, how it's built, and the decisions that shaped it."
+        lede="Apps I built at Softex, and products I designed and engineered on my own. Each opens into a case study: the problem, how it's built, and the calls I made."
       />
       <ul className="grid gap-5 lg:grid-cols-6">
         {projects.map((project, index) => (

@@ -46,9 +46,10 @@ export function Frame({ shot, priority = false, sizes }: { shot: Shot; priority?
 
   // Capped at the image's own width: a 320px crop stretched to fill a column
   // goes soft, and a sharp small image reads better than a blurry big one.
+  // The backing matches the dark captures, so no light rim shows at the corners.
   return (
     <div
-      className="overflow-hidden rounded-xl border border-line-strong bg-white"
+      className="overflow-hidden rounded-xl border border-line-strong bg-ink-2"
       style={{ maxWidth: shot.width }}
     >
       {image}

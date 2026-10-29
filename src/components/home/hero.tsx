@@ -1,13 +1,10 @@
 "use client";
 
-import { ArrowDownRight, Mail } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Mail } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
-import { profile } from "@/content/profile";
-import { projects } from "@/content/projects";
-
-const mobileCount = projects.filter((p) => p.platform === "mobile").length;
-const webCount = projects.length - mobileCount;
+import { now, profile } from "@/content/profile";
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 28 },
@@ -25,9 +22,10 @@ export function Hero() {
       <motion.h1
         {...rise(0.08)}
         id="hero-title"
-        className="mt-6 font-display text-[clamp(3rem,9vw,6.5rem)] font-bold leading-[0.95] tracking-[-0.045em] text-balance"
+        className="mt-6 font-display text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[0.98] tracking-[-0.045em] text-balance"
       >
-        I build apps people <span className="text-aurora">actually open.</span>
+        <span className="block">Interfaces people trust.</span>
+        <span className="block text-aurora">Systems that earn it.</span>
       </motion.h1>
 
       <motion.p {...rise(0.18)} className="mt-8 max-w-2xl text-lg leading-relaxed text-muted text-pretty sm:text-xl">
@@ -51,32 +49,40 @@ export function Hero() {
         </a>
       </motion.div>
 
-      <motion.dl
-        {...rise(0.34)}
-        className="mt-16 grid max-w-xl grid-cols-3 gap-6 border-t border-line pt-8 font-mono text-xs text-faint"
-      >
-        <div>
-          <dt className="sr-only">Products</dt>
-          <dd>
-            <span className="block font-display text-3xl font-semibold text-fg">{projects.length}</span>
-            products
-          </dd>
-        </div>
-        <div>
-          <dt className="sr-only">Mobile apps</dt>
-          <dd>
-            <span className="block font-display text-3xl font-semibold text-fg">{mobileCount}</span>
-            mobile apps
-          </dd>
-        </div>
-        <div>
-          <dt className="sr-only">Web products</dt>
-          <dd>
-            <span className="block font-display text-3xl font-semibold text-fg">{webCount}</span>
-            web products
-          </dd>
-        </div>
-      </motion.dl>
+      <motion.section {...rise(0.34)} aria-labelledby="now-title" className="glass mt-16 overflow-hidden rounded-2xl">
+        <h2
+          id="now-title"
+          className="flex items-center gap-2.5 border-b border-line px-5 py-3 font-mono text-xs uppercase tracking-[0.12em] text-faint"
+        >
+          <span aria-hidden className="relative flex size-2">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-mint opacity-60 motion-reduce:animate-none" />
+            <span className="relative inline-flex size-2 rounded-full bg-mint" />
+          </span>
+          Now
+        </h2>
+        {/* One column, then two, then four: rules sit between cells, never on the panel's edge. */}
+        <dl className="grid sm:grid-cols-2 lg:grid-cols-4">
+          {now.map((item) => (
+            <div
+              key={item.label}
+              className="border-t border-line px-5 py-4 first:border-t-0 sm:nth-2:border-t-0 sm:even:border-l lg:border-t-0 lg:border-l lg:first:border-l-0"
+            >
+              <dt className="font-mono text-xs text-faint">{item.label}</dt>
+              <dd className="mt-1.5">
+                {item.href ? (
+                  <Link href={item.href} className="group inline-flex items-center gap-1 font-medium text-fg hover:text-cyan-soft">
+                    {item.value}
+                    <ArrowUpRight aria-hidden className="size-3.5 text-faint transition-colors group-hover:text-cyan-soft" />
+                  </Link>
+                ) : (
+                  <span className="font-medium text-fg">{item.value}</span>
+                )}
+                <span className="block text-sm text-muted">{item.detail}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </motion.section>
     </section>
   );
 }

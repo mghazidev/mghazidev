@@ -1,18 +1,19 @@
 /**
  * Everything about Ghazi that is not a project.
  *
- * Carried over from the previous site so nothing is lost in the redesign. Dates
- * and titles are the ones that site published; the Softex end date is the only
- * value inferred (last commit to the company repos was April 2026).
+ * Dates and titles follow the official documents where one exists: the
+ * DevsquarePK experience letter (21.04.2025) and the Softex internship
+ * certificate. The Softex full-time role has no letter yet; it follows LinkedIn.
  */
 
 export const profile = {
   name: "Ghazi Zaidi",
   legalName: "Muhammad Ghazi",
-  role: "Mobile & Full-Stack Engineer",
+  role: "Web Product Engineer & Mobile Developer",
   email: "mghazidev@gmail.com",
+  location: "Munich, Germany",
   summary:
-    "I build Flutter apps and AI-native web products end to end — the screens, the state, and the backend they talk to.",
+    "I take products from flow to production — the interface people touch, and the state, data and failure handling that decide whether they can rely on it.",
   socials: [
     { label: "GitHub", href: "https://github.com/mghazidev", handle: "mghazidev" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/mghazidev/", handle: "in/mghazidev" },
@@ -20,6 +21,14 @@ export const profile = {
     { label: "Instagram", href: "https://www.instagram.com/mghazidev/", handle: "@mghazidev" },
   ],
 } as const;
+
+/** The hero's "now" strip: what Ghazi is doing today, not a tally of the past. */
+export const now: { label: string; value: string; detail: string; href?: string }[] = [
+  { label: "working", value: "Frontend & mobile developer", detail: "Softex Solution" },
+  { label: "studying", value: "BSc Computer Science", detail: "OTH Regensburg" },
+  { label: "building", value: "Daily Cook", detail: "A budget-first meal planner", href: "/work/daily-cook" },
+  { label: "based", value: "Munich", detail: "Germany" },
+];
 
 export type Role = {
   title: string;
@@ -31,10 +40,17 @@ export type Role = {
 
 export const experience: Role[] = [
   {
-    title: "Flutter Developer",
+    title: "Frontend & Mobile Developer",
     company: "Softex Solution",
     place: "United States · Remote",
-    period: "Dec 2025 — 2026",
+    period: "Apr 2026 — present",
+    points: ["Frontend and mobile work across Softex's products, against Laravel and Express backends."],
+  },
+  {
+    title: "Flutter Developer Intern",
+    company: "Softex Solution",
+    place: "United States · Remote",
+    period: "Nov 2025 — Feb 2026",
     points: [
       "Built three production mobile apps in Flutter and Dart: Buy n Grab, an HRM suite, and a real-time chat app.",
       "Integrated REST APIs and real-time channels (Socket.IO, Pusher) with GetX and Riverpod state management.",
@@ -51,14 +67,14 @@ export const experience: Role[] = [
     ],
   },
   {
-    title: "Frontend Engineer",
+    title: "Junior Frontend Engineer",
     company: "DevsquarePK",
     place: "Munich, Germany · Remote",
-    period: "Oct 2022 — Jan 2025",
+    period: "Nov 2023 — Apr 2025",
     points: [
-      "Developed and scaled an in-house product with Next.js, React, TypeScript and MUI.",
-      "Implemented authentication with NextAuth and handled backend tasks in Node.js.",
-      "Built reusable component libraries documented in Storybook, and owned features from requirements to deployment.",
+      "Led frontend development of the company's restaurant management suite: a SaaS ordering portal for restaurants, and back-office apps for online ordering and point of sale.",
+      "Shaped the product from scratch for web and mobile, including a presentational layer kept consistent and scalable across every interface.",
+      "Built with Next.js, React, TypeScript and MUI; authentication with NextAuth; reusable components documented in Storybook.",
     ],
   },
 ];

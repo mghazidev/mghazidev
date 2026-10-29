@@ -193,8 +193,8 @@ export const projects: Project[] = [
     gallery: [
       {
         src: "/work/finance-intelligence/chat-answer.png",
-        width: 768,
-        height: 640,
+        width: 1120,
+        height: 310,
         alt: "The assistant's answer with two tool calls, Read spending by category and Read your commitments, shown above it",
         frame: "none",
         caption: "From a live run against a local model: the assistant asks the engine for the figure instead of producing one.",
@@ -401,8 +401,8 @@ export const projects: Project[] = [
       {
         src: "/work/lecture-ai-companion/notes-panel.png",
         width: 836,
-        height: 810,
-        alt: "Notes for slide 2: the slide's own bullets, followed by generated notes saying a network round trip is about a million times slower than reading memory",
+        height: 510,
+        alt: "Notes for slide 2: the slide's own bullets, followed by generated notes giving memory access at 100 nanoseconds and disk or network access at 100 milliseconds",
         frame: "none",
         caption:
           "The generated notes carry the latency figures the lecturer said aloud — none of them are on the slide.",
