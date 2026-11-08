@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from "next/font/google";
 
-import { Aurora } from "@/components/aurora";
+import { Paper } from "@/components/paper";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { MotionProvider } from "@/components/motion-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -9,8 +10,8 @@ import { profile } from "@/content/profile";
 
 import "./globals.css";
 
-const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
-const sans = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const display = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-instrument" });
+const sans = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
 const title = `${profile.name} | ${profile.role}`;
@@ -29,21 +30,21 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#06060b",
-  colorScheme: "dark",
+  themeColor: "#f1ebe1",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
-      <body className="relative min-h-dvh overflow-x-clip">
+      <body className="relative min-h-dvh overflow-x-clip [counter-reset:section]">
         {/* Entrance animations are server-rendered at opacity 0 and revealed by
             JavaScript. Without JavaScript nothing would reveal them, and most of
             the page would look empty, so show everything as-is instead. */}
         <noscript>
           <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-        <Aurora />
+        <Paper />
         <MotionProvider>
           <a
             href="#main"
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to content
           </a>
+          <ScrollProgress />
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />

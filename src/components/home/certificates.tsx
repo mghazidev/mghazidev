@@ -49,7 +49,7 @@ function CertificateCard({ certificate, delay }: { certificate: Certificate; del
         </div>
         <div className="flex flex-1 flex-col p-5">
           <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-cyan">{certificate.kind}</p>
-          <h3 className="mt-2 flex items-start justify-between gap-3 font-display text-lg font-semibold leading-snug tracking-tight">
+          <h3 className="mt-2 flex items-start justify-between gap-3 font-display text-2xl leading-snug">
             {/* The whole card is the link; the overlay keeps the heading's name as its label. */}
             <a href={certificate.image.src} target="_blank" rel="noreferrer" className="after:absolute after:inset-0">
               {certificate.title}

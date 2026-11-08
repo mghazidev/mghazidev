@@ -34,7 +34,7 @@ export function Education() {
           {/* The track: bright where the path is now, fading toward the start. */}
           <span
             aria-hidden
-            className="absolute bottom-6 left-[calc(0.75rem-0.5px)] top-7 w-px bg-linear-to-b from-mint via-cyan to-transparent"
+            className="absolute bottom-6 left-[calc(0.75rem-0.5px)] top-7 w-px bg-linear-to-b from-signal via-line-strong to-transparent"
           />
           {education.map((stage, i) => (
             <li key={stage.award} className="relative">
@@ -43,10 +43,10 @@ export function Education() {
                 className="absolute -left-10 top-6 flex size-6 items-center justify-center"
               >
                 {stage.current && (
-                  <span className="absolute inline-flex size-4 animate-ping rounded-full bg-mint/50 motion-reduce:animate-none" />
+                  <span className="absolute inline-flex size-4 animate-ping rounded-full bg-signal/40 motion-reduce:animate-none" />
                 )}
                 <span
-                  className={`relative size-3 rounded-full border-2 border-ink ${stage.current ? "bg-mint shadow-[0_0_16px_var(--color-mint)]" : "bg-cyan shadow-[0_0_12px_var(--color-cyan)]"}`}
+                  className={`relative size-3 rounded-full border-2 border-ink ${stage.current ? "bg-signal" : "bg-fg"}`}
                 />
               </span>
               <Reveal delay={i * 0.05} className="glass rounded-2xl p-5 sm:p-6">
@@ -55,7 +55,7 @@ export function Education() {
                   {stage.current && <span className="text-mint">now</span>}
                   <span className="text-faint">{stage.place}</span>
                 </div>
-                <h3 className="mt-3 font-display text-xl font-semibold tracking-tight sm:text-2xl">{stage.award}</h3>
+                <h3 className="mt-3 font-display text-2xl sm:text-3xl">{stage.award}</h3>
                 <p className="mt-1 text-violet">{stage.school}</p>
                 <ul className="mt-4 space-y-1.5 text-sm leading-relaxed text-muted">
                   {stage.facts.map((fact) => (
@@ -85,7 +85,7 @@ export function Education() {
             <div className="relative">
               <p className="font-mono text-xs text-faint">MAJU · cumulative</p>
               <p className="mt-2 flex items-baseline gap-2">
-                <span className="font-display text-6xl font-bold tracking-tight text-fg">3.80</span>
+                <span className="font-display text-7xl text-fg">3.80</span>
                 <span className="font-mono text-sm text-muted">/ 4.00 CGPA</span>
               </p>
               <p className="mt-1 text-sm text-muted">Three semesters, 49 credit hours.</p>

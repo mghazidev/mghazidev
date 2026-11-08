@@ -8,7 +8,7 @@ export function Surfaces({ surfaces, intro }: { surfaces: Surface[]; intro?: str
   return (
     <section aria-labelledby="surfaces-title" className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
       <Reveal className="max-w-2xl">
-        <h2 id="surfaces-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h2 id="surfaces-title" className="font-display text-4xl sm:text-5xl">
           Inside the product
         </h2>
         {intro && <p className="mt-4 leading-relaxed text-muted text-pretty">{intro}</p>}
@@ -22,7 +22,7 @@ export function Surfaces({ surfaces, intro }: { surfaces: Surface[]; intro?: str
               <p aria-hidden className="font-mono text-xs text-[var(--accent)]">
                 {String(n + 1).padStart(2, "0")} / {String(surfaces.length).padStart(2, "0")}
               </p>
-              <h3 id={headingId} className="mt-3 font-display text-2xl font-semibold tracking-tight">
+              <h3 id={headingId} className="mt-3 font-display text-3xl">
                 {surface.title}
               </h3>
               <p className="mt-2 leading-relaxed text-muted text-pretty">{surface.summary}</p>

@@ -30,13 +30,8 @@ export function ProjectCard({
     <Link
       href={`/work/${project.slug}`}
       style={{ "--accent": project.accent } as React.CSSProperties}
-      className={`glass group relative flex h-full flex-col overflow-hidden rounded-3xl p-5 transition-[transform,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-[color-mix(in_oklab,var(--accent)_45%,transparent)] sm:p-6 ${flagship ? "lg:flex-row lg:items-stretch lg:gap-10" : ""}`}
+      className={`glass group relative flex h-full flex-col p-5 transition-[transform,box-shadow,border-color] duration-300 ease-out-expo hover:-translate-x-1 hover:-translate-y-1 hover:border-fg hover:shadow-[6px_6px_0_var(--color-signal-bright)] sm:p-6 ${flagship ? "lg:flex-row lg:items-stretch lg:gap-10" : ""}`}
     >
-      {/* Accent glow that follows the card's own colour. */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 size-64 rounded-full bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--accent)_30%,transparent),transparent)] opacity-60 transition-opacity duration-500 group-hover:opacity-100"
-      />
 
       <div
         className={`relative mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-ink-2 ${flagship ? "lg:mb-0 lg:w-3/5 lg:shrink-0" : ""}`}
@@ -82,11 +77,11 @@ export function ProjectCard({
           )}
         </p>
 
-        <h3 className="mt-3 flex items-start justify-between gap-3 font-display text-2xl font-semibold tracking-tight">
+        <h3 className={`mt-3 flex items-start justify-between gap-3 font-display leading-[1.05] ${flagship ? "text-5xl" : "text-3xl"}`}>
           {project.title}
           <ArrowUpRight
             aria-hidden
-            className="mt-1 size-5 shrink-0 text-faint transition-[transform,color] duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg"
+            className="mt-1 size-5 shrink-0 text-faint transition-[transform,color] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal"
           />
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-muted text-pretty">
@@ -98,7 +93,7 @@ export function ProjectCard({
             {project.metrics.map((m) => (
               <div key={m.label} className="flex flex-col-reverse bg-ink-2 px-3 py-2.5">
                 <dt className="font-mono text-[11px] text-faint">{m.label}</dt>
-                <dd className="font-display text-xl font-semibold text-fg">{m.value}</dd>
+                <dd className="font-display text-4xl text-fg">{m.value}</dd>
               </div>
             ))}
           </dl>

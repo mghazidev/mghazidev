@@ -1,42 +1,60 @@
 @import "tailwindcss";
 
 /*
- * Design system, "Aurora" surfaces with "Blueprint" detail.
+ * Design system, "Editorial": warm paper, black ink, one vermilion signal.
  *
- * One dark theme, deliberately. The site is a showcase, and the work it shows
- * is dark-UI work; a light mode would be a second design to maintain for no
- * reader who asked for it.
+ * The token names predate the redesign and are kept so components did not all
+ * have to change: `ink` is the page (now paper), `fg` is the ink text. Every
+ * text colour here clears WCAG AA (4.5:1) on both paper tones.
  */
 
 @theme {
-  --color-ink: #06060b;
-  --color-ink-2: #0b0b13;
-  --color-fg: #ecebf5;
-  --color-muted: #a9a8bd;
-  --color-faint: #6f6e86;
-  --color-line: rgb(255 255 255 / 0.09);
-  --color-line-strong: rgb(255 255 255 / 0.16);
-  --color-glass: rgb(255 255 255 / 0.045);
+  --color-ink: #f1ebe1; /* page paper */
+  --color-ink-2: #f8f4ec; /* card paper, a shade lighter */
+  --color-fg: #16130f; /* ink */
+  --color-muted: #4f483f;
+  --color-faint: #6e655a;
+  --color-line: rgb(22 19 15 / 0.12);
+  --color-line-strong: rgb(22 19 15 / 0.24);
+  --color-glass: rgb(255 255 255 / 0.55);
 
-  --color-violet: #a78bfa;
-  --color-violet-deep: #7c5cff;
-  --color-cyan: #22d3ee;
-  --color-cyan-soft: #67e8f9;
-  --color-pink: #f9a8d4;
-  --color-mint: #34d399;
+  /* One signal colour. The old hue names map onto it so existing classes keep working. */
+  --color-signal: #c2330e; /* text-safe vermilion */
+  --color-signal-bright: #ff4a1c; /* blocks and large shapes only */
+  --color-violet: #c2330e;
+  --color-violet-deep: #a32a0b;
+  --color-cyan: #16130f;
+  --color-cyan-soft: #c2330e;
+  --color-pink: #c2330e;
+  --color-mint: #296b45; /* "live" and "now" markers */
 
-  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Print-sharp corners everywhere; only pills and device frames stay round. */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-3xl: 6px;
+
+  --animate-marquee: marquee 38s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {
   html {
     background: var(--color-ink);
     color: var(--color-fg);
-    color-scheme: dark;
+    color-scheme: light;
     scroll-behavior: smooth;
   }
 
@@ -47,14 +65,20 @@
   }
 
   ::selection {
-    background: rgb(167 139 250 / 0.35);
+    background: var(--color-signal-bright);
     color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-cyan);
+    outline: 2px solid var(--color-signal);
     outline-offset: 3px;
-    border-radius: 6px;
+    border-radius: 4px;
+  }
+
+  /* Instrument Serif ships one weight. Never let the browser fake a bold. */
+  .font-display {
+    font-synthesis: none;
+    letter-spacing: -0.015em;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -65,54 +89,75 @@
 }
 
 @layer components {
-  /* Frosted panel used for cards and the header. */
+  /* A paper card: a shade lighter than the page, with a hairline edge. */
   .glass {
-    background: linear-gradient(160deg, rgb(255 255 255 / 0.075), rgb(255 255 255 / 0.018));
+    background: var(--color-ink-2);
     border: 1px solid var(--color-line);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
   }
 
-  /* Gradient headline text. */
+  /* The accented word in a heading: italic serif in the signal colour. */
   .text-aurora {
-    background: linear-gradient(100deg, #c4b5fd 5%, #67e8f9 55%, #f9a8d4 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-synthesis: none;
+    color: var(--color-signal);
   }
 
-  /* Section eyebrow, the mono "// label" line above headings. */
+  /* Small mono label above headings, led by a vermilion square. */
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-violet);
+    color: var(--color-signal);
   }
 
-  /* The "//" is decoration: in CSS so JSX stays clean, with empty alt text so
-     screen readers don't announce "slash slash". */
   .eyebrow::before {
-    content: "// " / "";
+    content: "■ " / "";
+    font-size: 0.6em;
+    vertical-align: 0.2em;
   }
 
-  /* Blueprint corner brackets, drawn with gradients so no extra markup is needed. */
+  /* Home sections are numbered like a magazine: (01) WORK, (02) HOW I WORK. */
+  .numbered {
+    counter-increment: section;
+  }
+
+  .numbered .eyebrow::before {
+    content: "(" counter(section, decimal-leading-zero) ")  " / "";
+    font-size: 1em;
+    vertical-align: 0;
+  }
+
+  /* Corner marks on technical panels, like crop marks on a proof. */
   .brackets {
-    --b: var(--color-cyan);
+    --b: var(--color-fg);
     background:
-      linear-gradient(var(--b), var(--b)) top left / 14px 2px no-repeat,
-      linear-gradient(var(--b), var(--b)) top left / 2px 14px no-repeat,
-      linear-gradient(var(--b), var(--b)) top right / 14px 2px no-repeat,
-      linear-gradient(var(--b), var(--b)) top right / 2px 14px no-repeat,
-      linear-gradient(var(--b), var(--b)) bottom left / 14px 2px no-repeat,
-      linear-gradient(var(--b), var(--b)) bottom left / 2px 14px no-repeat,
-      linear-gradient(var(--b), var(--b)) bottom right / 14px 2px no-repeat,
-      linear-gradient(var(--b), var(--b)) bottom right / 2px 14px no-repeat;
+      linear-gradient(var(--b), var(--b)) top left / 12px 1.5px no-repeat,
+      linear-gradient(var(--b), var(--b)) top left / 1.5px 12px no-repeat,
+      linear-gradient(var(--b), var(--b)) top right / 12px 1.5px no-repeat,
+      linear-gradient(var(--b), var(--b)) top right / 1.5px 12px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom left / 12px 1.5px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom left / 1.5px 12px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom right / 12px 1.5px no-repeat,
+      linear-gradient(var(--b), var(--b)) bottom right / 1.5px 12px no-repeat;
   }
 
-  /* Dotted engineering grid behind case-study panels. */
+  /* Faint dot grid behind technical panels. */
   .dot-grid {
-    background-image: radial-gradient(rgb(94 230 255 / 0.13) 1px, transparent 1px);
-    background-size: 22px 22px;
+    background-image: radial-gradient(rgb(22 19 15 / 0.14) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* The scrolling project strip pauses when a visitor reaches for it. */
+  .marquee:hover > *,
+  .marquee:focus-within > * {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee > * {
+      animation: none;
+    }
   }
 }

@@ -17,14 +17,13 @@ export function About() {
               alt={`Portrait of ${profile.name}`}
               fill
               sizes="(min-width: 768px) 288px, 224px"
-              className="object-cover"
+              className="object-cover grayscale transition-[filter] duration-700 hover:grayscale-0"
             />
-            <span aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent" />
           </div>
         </Reveal>
         <Reveal delay={0.08}>
           <p className="eyebrow">About</p>
-          <h2 id="about-title" className="mt-4 font-display text-4xl font-semibold tracking-tight text-balance">
+          <h2 id="about-title" className="mt-4 font-display text-5xl text-balance">
             A little <span className="text-aurora">about me.</span>
           </h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted text-pretty">

@@ -51,17 +51,17 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         <p className="mt-10 font-mono text-xs uppercase tracking-[0.12em] text-[var(--accent)]">
           Case study · {project.platform} · {project.year}
         </p>
-        <h1 className="mt-4 font-display text-[clamp(2.75rem,7vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-balance">
+        <h1 className="mt-4 font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.95] text-balance">
           {project.title}
         </h1>
         <p className="mt-5 max-w-2xl text-xl leading-relaxed text-muted text-pretty">{project.tagline}</p>
 
         <dl className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line font-mono text-xs sm:grid-cols-4">
           {[
-            ["role", project.role],
-            ["context", project.context],
-            ["status", project.statusLabel],
-            ["platform", project.platform === "mobile" ? "Mobile" : "Web"],
+            ["Role", project.role],
+            ["Context", project.context],
+            ["Status", project.statusLabel],
+            ["Platform", project.platform === "mobile" ? "Mobile" : "Web"],
           ].map(([term, value]) => (
             <div key={term} className="bg-ink-2 px-4 py-3.5">
               <dt className="text-faint">{term}</dt>
@@ -121,7 +121,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
       {/* ── How it's built ─────────────────────────────────────── */}
       <section aria-labelledby="how-title" className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <h2 id="how-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 id="how-title" className="font-display text-4xl sm:text-5xl">
             How it&apos;s built
           </h2>
         </Reveal>
@@ -134,7 +134,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
                 {project.metrics.map((m) => (
                   <div key={m.label} className="flex flex-col-reverse bg-ink-2 px-4 py-3">
                     <dt className="font-mono text-[11px] text-faint">{m.label}</dt>
-                    <dd className="font-display text-2xl font-semibold text-fg">{m.value}</dd>
+                    <dd className="font-display text-3xl text-fg">{m.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -157,7 +157,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
           {project.decisions.map((d, i) => (
             <li key={d.title}>
               <Reveal delay={i * 0.05} className="glass h-full rounded-2xl p-6">
-                <h3 className="font-display text-lg font-semibold tracking-tight">{d.title}</h3>
+                <h3 className="font-display text-2xl">{d.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted text-pretty">{d.detail}</p>
               </Reveal>
             </li>
@@ -168,7 +168,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
       {/* ── Features ───────────────────────────────────────────── */}
       <section aria-labelledby="features-title" className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <Reveal>
-          <h2 id="features-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 id="features-title" className="font-display text-4xl sm:text-5xl">
             What it does
           </h2>
         </Reveal>
@@ -191,7 +191,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
       {(project.gallery.length > 0 || project.video) && (
         <section aria-labelledby="screens-title" className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
           <Reveal>
-            <h2 id="screens-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 id="screens-title" className="font-display text-4xl sm:text-5xl">
               Screens
             </h2>
           </Reveal>
@@ -230,7 +230,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         >
           <span>
             <span className="eyebrow">Next case study</span>
-            <span className="mt-3 block font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            <span className="mt-3 block font-display text-4xl sm:text-5xl">
               {next.title}
             </span>
             <span className="mt-2 block text-muted">{next.tagline}</span>
@@ -252,7 +252,7 @@ function BlueprintPanel({ label, children }: { label: string; children: React.Re
       <div aria-hidden className="dot-grid absolute inset-0 rounded-xl opacity-60" />
       <p className="relative mb-8 flex justify-between font-mono text-xs text-faint">
         <span>{label}</span>
-        <span className="text-cyan">●</span>
+        <span aria-hidden className="text-signal">●</span>
       </p>
       <div className="relative">{children}</div>
     </div>

@@ -89,7 +89,7 @@ export const projects: Project[] = [
     year: "2023 – 2025",
     context: "DevsquarePK",
     role: "Frontend engineer, leading the frontend across three products",
-    accent: "#fb7185",
+    accent: "#c2330e",
     problem:
       "Small restaurants, food carts and home chefs in Pakistan had little between a paper menu and an aggregator that takes a large cut of every order. DevsquarePK set out to give each of them a page, a menu and an ordering system of their own.",
     built:
@@ -392,7 +392,7 @@ export const projects: Project[] = [
     year: "2026",
     context: "Softex Solution",
     role: "Flutter developer: UI system, state and real-time integration",
-    accent: "#8b5cf6",
+    accent: "#2c5aa0",
     problem:
       "The company wanted its own internal messenger: conversations, groups and media tied to its own accounts and backend rather than a consumer chat app.",
     built:
@@ -492,7 +492,7 @@ export const projects: Project[] = [
     year: "2026",
     context: "Personal product",
     role: "Solo: product, architecture, backend, frontend",
-    accent: "#22d3ee",
+    accent: "#1f6f5c",
     problem:
       "Finance apps either need your bank login or ask an AI to read your money and hope it adds up. Neither is acceptable for data this sensitive.",
     built:
@@ -612,7 +612,7 @@ export const projects: Project[] = [
     year: "2026",
     context: "Product build",
     role: "Flutter developer: full refactor, design and API integration",
-    accent: "#f472b6",
+    accent: "#b03a6e",
     problem:
       "New parents juggle a photo app, a notes app, forums, shops and word of mouth for care. The brief was one place for all of it.",
     built:
@@ -744,7 +744,7 @@ export const projects: Project[] = [
     year: "2026",
     context: "Personal product",
     role: "Solo: product, architecture, backend, frontend",
-    accent: "#a3e635",
+    accent: "#5f6b12",
     problem:
       "Slides carry the outline; the explanation around them is where the content is, and it's exactly what gets missed while you're writing.",
     built:
@@ -869,7 +869,7 @@ export const projects: Project[] = [
     year: "2026",
     context: "Softex Solution",
     role: "Flutter developer: screens, state and API integration",
-    accent: "#f59e0b",
+    accent: "#96560a",
     problem:
       "Local sellers needed one app to list products, reach buyers and pay to stand out, without building a store of their own.",
     built:
@@ -983,14 +983,14 @@ export const projects: Project[] = [
     year: "2026",
     context: "Softex Solution",
     role: "Flutter developer: glass UI redesign, refactors and API integration",
-    accent: "#34d399",
+    accent: "#2f6b47",
     problem:
       "Leave requests, standups and project tracking lived in different tools, so nobody had one view of the team.",
     built:
       "A GetX app covering the whole HR loop (leave, people, projects, meetings and reporting), with charts for team and personal reports.",
     stack: [
       { layer: "Client", items: ["Flutter", "Dart", "GetX"] },
-      { layer: "Data", items: ["REST (http)", "shared_preferences"] },
+      { layer: "Data", items: ["REST API", "shared_preferences"] },
       { layer: "UI", items: ["fl_chart", "shimmer"] },
     ],
     architecture: {
@@ -1108,7 +1108,7 @@ export const projects: Project[] = [
     year: "2026",
     context: "Personal product",
     role: "Solo: product, architecture, backend, mobile",
-    accent: "#fb923c",
+    accent: "#a84818",
     problem:
       "Meal planners start from recipes and leave the cost as a surprise. Daily Cook starts from the budget.",
     built:
@@ -1238,7 +1238,7 @@ export const projects: Project[] = [
     year: "2025",
     context: "Personal product",
     role: "Solo: product, design, frontend",
-    accent: "#4ade80",
+    accent: "#336d25",
     problem:
       "Booking a sports ground usually means phoning the venue and hoping a slot is free. Owners track bookings on paper and can't see what earns them money.",
     built:

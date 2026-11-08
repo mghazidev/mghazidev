@@ -33,12 +33,12 @@ export function Principles() {
               <article className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-colors hover:border-line-strong">
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-violet via-cyan to-pink opacity-40 transition-opacity group-hover:opacity-100"
+                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-signal-bright transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
                 />
-                <p aria-hidden className="font-mono text-xs text-cyan">
+                <p aria-hidden className="font-display text-5xl leading-none text-signal">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-3 font-display text-xl font-semibold tracking-tight">{principle.title}</h3>
+                <h3 className="mt-3 font-display text-2xl">{principle.title}</h3>
                 {/* Three lines reserved so "Applied in" lines up across a row. */}
                 <p className="mt-2 text-sm leading-relaxed text-muted text-pretty md:min-h-[3lh]">{principle.belief}</p>
                 <p className="mt-6 border-t border-line pt-4 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-faint">
